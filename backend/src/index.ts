@@ -1,13 +1,50 @@
 import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 const app = express();
+const JWT_SECRET = process.env.JWT_SECRET || "secret-key-change-in-production";
 app.use(cors());
 app.use(express.json());
 
 app.get("/health", (req, res) => res.json({ status: "ok" }));
+
+app.post("/auth/register", async (req, res) => {
+  const { email, password, name } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: "email and password are required" });
+  }
+  const hashedPassword = await bcrypt.hash(password, 10);
+  try {
+    const user = await prisma.user.create({
+      data: { email, password: hashedPassword, name },
+    });
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: "7d" });
+    res.status(201).json({ token, user: { id: user.id, email: user.email, name: user.name } });
+  } catch (e) {
+    res.status(400).json({ error: "email already exists" });
+  }
+});
+
+app.post("/auth/login", async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: "email and password are required" });
+  }
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) {
+    return res.status(401).json({ error: "invalid credentials" });
+  }
+  const valid = await bcrypt.compare(password, user.password);
+  if (!valid) {
+    return res.status(401).json({ error: "invalid credentials" });
+  }
+  const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: "7d" });
+  res.json({ token, user: { id: user.id, email: user.email, name: user.name } });
+});
 
 app.get("/tasks", async (req, res) => {
   const { completed } = req.query;
