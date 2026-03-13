@@ -36,11 +36,11 @@ app.post("/auth/login", async (req, res) => {
   }
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
-    return res.status(401).json({ error: "invalid credentials" });
+    return res.status(401).json({ error: "user not found" });
   }
   const valid = await bcrypt.compare(password, user.password);
   if (!valid) {
-    return res.status(401).json({ error: "invalid credentials" });
+    return res.status(401).json({ error: "invalid password" });
   }
   const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: "7d" });
   res.json({ token, user: { id: user.id, email: user.email, name: user.name } });
