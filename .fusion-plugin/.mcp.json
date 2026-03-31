@@ -4,7 +4,7 @@
       "url": "https://mcp.figma.com/mcp",
       "type": "http",
       "headers": {
-        "Authorization": "Bearer ${FIGMA_TOKEN}"
+        "Authorization": "Bearer ${FIGMA_ACCESS_TOKEN}"
       }
     },
     "notion": {
