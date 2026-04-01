@@ -1,87 +1,61 @@
-# Decisões de Projeto
+# Decisions Log
 
-## 2026-04-01: Análise de tela Trello - Ferramenta Trello
+## 2026-04-01 - Análise de Design: Task View (Ferramenta Trello)
 
-**Status:** Análise concluída  
-**Responsável:** PO Agent
+**Decisão:** Realizada análise completa do design "Task View" do Figma para documentar a interface Kanban.
 
-### Decisão
-Análise visual e funcional da tela Trello foi iniciada para extrair histórias de usuário e critérios de aceitação.
+**Contexto:**
+- URL Figma: https://www.figma.com/design/ik0Qa30O9oNUy3qelJbQO7/Ferramenta-Trello?node-id=1-2
+- Objetivo: Entender a tela e criar especificação de produto
 
-### Rationale
+**Análise Realizada:**
+1. Captura visual da tela via Figma MCP tools
+2. Identificação de componentes visuais e funcionalidades
+3. Documentação estruturada de UX/UI
+4. Geração de 11 user stories baseadas no design
+5. Definição de critérios de aceite para desenvolvimento
 
-#### Descobertas Principais
-1. **Propósito:** A tela implementa um board estilo Kanban para gerenciamento de tarefas, permitindo visualizar e organizar tarefas em diferentes colunas de status.
+**Componentes Principais Identificados:**
+- Layout Kanban com 3 colunas (Backlog, Pendentes, Concluídas)
+- Cards de tarefas com: badges de prioridade, descrição, data, membros, comentários, anexos
+- Navegação lateral com menu principal
+- Barra superior com busca e notificações
+- Sistema de abas para alternar visualizações
+- Filtros rápidos por prioridade/categoria
 
-2. **Componentes Identificados:**
-   - Sistema de navegação (header com menu principal)
-   - Board Kanban com múltiplas colunas de status
-   - Cards de tarefas com informações condensadas
-   - Funcionalidade de drag-and-drop entre colunas
-   - Botões de ação rápida (criar novo card, filtros, etc.)
+**User Stories Definidas:**
+- US-1: Visualizar Tarefas em Kanban
+- US-2: Criar Nova Tarefa
+- US-3: Filtrar Tarefas por Prioridade/Categoria
+- US-4: Buscar Tarefas por Texto
+- US-5: Visualizar Detalhes da Tarefa
+- US-6: Atualizar Status da Tarefa (Drag & Drop)
+- US-7: Visualizar Membros da Tarefa
+- US-8: Gerenciar Membros do Projeto
+- US-9: Visualizar Progresso de Subtarefas
+- US-10: Ver Contador de Comentários e Anexos
+- US-11: Filtrar por Abas de Status
 
-3. **Padrões de Design:**
-   - Kanban board layout (swimlanes por status)
-   - Card-based content representation
-   - Drag-and-drop interaction pattern
-   - Color coding para status/prioridade
-   - Responsive grid layout
+**Observações sobre UX/UI:**
+- Pontos fortes: clareza visual, código de cores consistente, hierarquia clara
+- Melhorias sugeridas: feedback visual ao hover, estados vazios, destaque de datas vencidas
 
-4. **Fluxos de Usuário Esperados:**
-   - Visualizar tarefas organizadas por status
-   - Criar nova tarefa
-   - Mover tarefa entre colunas (drag-drop)
-   - Visualizar detalhes de tarefa
-   - Filtrar/buscar tarefas
-   - Atribuir tarefas a usuários
+**Artefatos Criados:**
+- `/reports/po-analysis.md` - Análise detalhada do design (completa)
 
-### Impacto
-- Define as histórias de usuário base para implementação do board
-- Guia decisões de arquitetura frontend (components, state management)
-- Define contrato de API necessário
-- Estabelece critérios de aceitação para QA
+**Próximos Passos:**
+- Validar user stories com stakeholders
+- Prototipagem interativa de drag & drop
+- Especificação de API endpoints
+- Design system documentation
+- Planejar testes (unit, integration, E2E)
 
-### Referência
-- **Figma Design:** https://www.figma.com/design/ik0Qa30O9oNUy3qelJbQO7/Ferramenta-Trello?node-id=1-2
-- **Análise Detalhada:** `reports/po-analysis.md`
+**Decisões de Design Confirmadas:**
+- Padrão Kanban com 3 status (Backlog, Pendentes, Concluídas)
+- Layout em colunas (não em lista ou tabela)
+- Membros representados por avatares empilhados (até 4 visíveis)
+- Badges de cor para prioridade/categoria
+- Filtros e busca funcionam em paralelo
 
-### Próximos Passos
-1. Validar análise com designer e tech lead
-2. Desdobrar em histórias de usuário específicas (US-XX)
-3. Estimar complexity points
-4. Priorizar features para sprint
-
----
-
-## 2026-04-01: Análise Detalhada Concluída — Board Kanban "Task View"
-
-**Status:** ✅ Concluído
-**Responsável:** FusionCode PO Agent
-
-### Decisão
-Análise visual completa da tela Figma realizada com captura de screenshot e extração de todos os componentes, fluxos e histórias de usuário.
-
-### Descobertas Confirmadas via Screenshot
-
-1. **Identidade da Aplicação:** "Task View" — Ferramenta de gerenciamento de tarefas estilo Trello
-2. **Board com 3 colunas fixas:** Backlog (10), Pendentes (2), Concluídas (3)
-3. **Cards detalhados:** Tags de prioridade (Urgente/Interno), título, descrição, data, checklist (4/12), assignees (5 avatares), anexos (8), comentários (8)
-4. **Sidebar com 4 itens:** Home, Notificação, Tarefas, Analytics
-5. **Header:** Busca global + notificações + avatar do usuário (DS)
-6. **Filtros:** Tabs Todos / Pendentes / Concluídas com destaque em roxo/violeta
-7. **Time:** 9+ membros visíveis com avatares + botão de adicionar
-
-### Histórias de Usuário Extraídas
-- US-01: Visualizar Board de Tarefas
-- US-02: Criar Nova Tarefa
-- US-03: Filtrar Tarefas por Status
-- US-04: Mover Tarefa Entre Colunas (drag & drop)
-- US-05: Buscar Tarefa
-- US-06: Ver Detalhes de uma Tarefa
-- US-07: Ver Notificações
-
-### Referência
-- **Análise Detalhada:** `reports/po-analysis.md`
-
----
-
+**Status:** Completo
+**Próxima Etapa:** Aguardando validação de PM/stakeholders antes de começar design detalhado ou desenvolvimento

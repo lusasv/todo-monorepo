@@ -1,444 +1,403 @@
-# Análise de Tela — Ferramenta Trello (Task View)
+# Análise de Design - Task View (Ferramenta Trello)
 
-**Data:** 2026-04-01
-**Figma:** [Ferramenta Trello](https://www.figma.com/design/ik0Qa30O9oNUy3qelJbQO7/Ferramenta-Trello?node-id=1-2)
-**Node ID:** 1:2
-**Analisado por:** FusionCode / PO Agent
-**Status:** Concluído
-
----
-
-## 1. Propósito da Tela
-
-### Objetivo Primário
-Esta tela é o **Board Kanban principal** da aplicação "Task View" — uma ferramenta de gerenciamento de tarefas inspirada no Trello. O objetivo central é oferecer uma **visão consolidada de todas as tarefas** do time, organizadas por status (Backlog, Pendentes, Concluídas), permitindo que o usuário acompanhe o progresso e gerencie as atividades de forma visual e colaborativa.
-
-### Contexto de Uso
-- O usuário acessa esta tela como **tela principal/dashboard** após o login.
-- É o ponto central de trabalho do dia a dia do time.
-- Pré-requisito: usuário autenticado com acesso ao projeto/board.
+**Data:** 2026-04-01  
+**Arquivo Figma:** https://www.figma.com/design/ik0Qa30O9oNUy3qelJbQO7/Ferramenta-Trello  
+**Node ID:** 1:2  
+**Designer:** Análise realizada por PO Agent
 
 ---
 
-## 2. Componentes da Interface (UI)
+## 1. Visão Geral da Tela
 
-### 2.1 Navegação
+A tela "Task View" é um painel de gerenciamento de tarefas estilo Kanban, similar ao Trello. Apresenta um sistema de colunas onde as tarefas são organizadas por status: **Todos (Backlog)**, **Pendentes** e **Concluídas**. 
 
-#### Sidebar Esquerda (Menu Lateral Fixo)
-| Componente | Rótulo | Ação |
-|---|---|---|
-| Ícone + Texto | Home | Ir para tela inicial |
-| Ícone + Texto | Notificação | Abrir central de notificações |
-| Ícone + Texto | Tarefas | Página atual — board de tarefas |
-| Ícone + Texto | Analytics | Abrir painel analítico |
-
-#### Top Bar (Cabeçalho)
-| Componente | Rótulo/Conteúdo | Ação |
-|---|---|---|
-| Logo + Nome | "Task View" (com ícone de grid colorido) | Identidade da aplicação |
-| Search Bar | "Pesquise suas tarefas" | Busca global de tarefas |
-| Bell Icon | Notificação | Abrir notificações |
-| Avatar | "DS" (iniciais do usuário) | Menu de perfil / configurações |
-
-### 2.2 Área de Filtros / Tabs
-
-Localizado acima do board, com três opções:
-| Tab | Estado | Descrição |
-|---|---|---|
-| **Todos** | Selecionado (pill roxo) | Exibe tarefas de todas as colunas |
-| Pendentes | Normal | Filtra apenas tarefas pendentes |
-| Concluídas | Normal | Filtra apenas tarefas concluídas |
-
-Ao lado direito das tabs: **avatares dos membros do time** (9 avatares visíveis + "+5" indicando mais membros) e um botão "+" para adicionar membros.
-
-### 2.3 Board Kanban — Colunas
-
-Três colunas visíveis, com layout horizontal:
-
-| Coluna | Contagem | Cor do Header |
-|---|---|---|
-| **Backlog** | 10 tarefas | Cinza/Neutro |
-| **Pendentes** | 2 tarefas | Cinza/Neutro |
-| **Concluídas** | 3 tarefas | Cinza/Neutro |
-
-Cada coluna possui:
-- **Header**: Nome da coluna + contagem de tarefas + botão "+" (adicionar novo card)
-- **Lista de cards**: rolagem vertical dentro da coluna
-- **Botão "+"**: Roxo/violeta, canto superior direito do header
-
-### 2.4 Cards de Tarefa
-
-Cada card contém os seguintes elementos:
-
-| Elemento | Descrição |
-|---|---|
-| **Tags de prioridade/tipo** | Badges coloridos: "Urgente" (vermelho/rosa), "Interno" (roxo), "Interno" (verde) |
-| **Menu de opções** | Ícone "⋯" (três pontos) — ações contextuais do card |
-| **Título** | "Customer Support Expert" — texto em negrito |
-| **Descrição** | Texto descritivo (Lorem ipsum como placeholder) |
-| **Data** | Ícone de calendário + "4 Mar. 2026" |
-| **Progresso de checklist** | Ícone de lista + "4/12" (itens concluídos / total) |
-| **Avatares de assignees** | 5 avatares de usuários atribuídos ao card |
-| **Anexos** | Ícone de clipe + número "8" |
-| **Comentários** | Ícone de chat/balão + número "8" |
+**Propósito:** Permitir aos usuários visualizar, organizar e gerenciar tarefas de forma visual, utilizando um modelo de colunas baseado em status.
 
 ---
 
-## 3. Análise de Fluxo de Usuário
+## 2. Componentes e Elementos Visuais
 
-### 3.1 Jornada Principal — Acompanhar Tarefas do Time
+### 2.1 Layout Principal
 
+#### Navegação Lateral (Sidebar)
+- **Ícone + Logo:** "Task View" com ícone de tarefas
+- **Itens de Menu:**
+  - Home
+  - Notificação (com ícone de sino)
+  - Tarefas
+  - Analytics
+- **Design:** Menu minimalista em cores neutras (cinza/preto), com ícones ao lado de labels
+
+#### Barra Superior (Header)
+- **Search Bar:** Campo de busca com placeholder "Pesquise suas tarefas"
+- **Ícones Superiores Direitos:**
+  - Ícone de notificação (sino)
+  - Avatar "DS" (iniciais do usuário)
+
+#### Área de Abas (Tab Navigation)
+- **Abas Disponíveis:** "Todos" (ativa, roxo/purple), "Pendentes", "Concluídas"
+- **Comportamento:** A aba "Todos" é a ativa por padrão
+
+#### Seção de Filtros
+- **Badges de Filtro:** "Urgente", "Interno", "Interno" (cores: vermelho, amarelo, verde)
+- **Função:** Filtros rápidos para categorizar tarefas
+
+### 2.2 Colunas (Kanban Columns)
+
+A tela contém **3 colunas principais**, cada uma representando um status:
+
+#### Coluna 1: Backlog (Todos)
+- **Contador:** "10 tarefas"
+- **Botão de Ação:** Botão "+" para adicionar nova tarefa
+- **Cards de Tarefas:** 4 cards visíveis
+  - Cada card contém:
+    - Badges de prioridade/tipo (Urgente, Interno, Interno)
+    - Título da tarefa: "Customer Support Expert"
+    - Descrição: Lorem ipsum (texto cinzento)
+    - Data: "4 Mar, 2026"
+    - Contador de subtarefas: "4/12" (progresso)
+    - Avatares de membros atribuídos: até 4 avatares empilhados
+    - Ícones de ações: comentários (💬) com contador e anexos (📎) com contador
+
+#### Coluna 2: Pendentes
+- **Contador:** "2 tarefas"
+- **Botão de Ação:** Botão "+" para adicionar nova tarefa
+- **Cards de Tarefas:** 2 cards visíveis
+- **Estrutura Idêntica:** Mesmos componentes da coluna Backlog
+
+#### Coluna 3: Concluídas
+- **Contador:** "3 tarefas"
+- **Botão de Ação:** Botão "+" para adicionar nova tarefa
+- **Cards de Tarefas:** 2 cards visíveis
+- **Estrutura Idêntica:** Mesmos componentes das colunas anteriores
+
+### 2.3 Componentes de Cards
+
+#### Anatomia de um Card de Tarefa
 ```
-1. Usuário acessa a tela "Tarefas" pelo menu lateral
-   ↓
-2. Sistema exibe o board Kanban com as colunas (Backlog, Pendentes, Concluídas)
-   ↓
-3. Usuário visualiza cards com status, datas, assignees e progresso
-   ↓
-4. Usuário filtra por tab (Todos / Pendentes / Concluídas) para focar
-   ↓
-5. Usuário clica em um card para ver detalhes ou editar
-   ↓
-6. Resultado: usuário tem visibilidade total do status do time
+┌─────────────────────────────────────┐
+│ [Urgente] [Interno] [Interno]  [...] │  ← Badges + Menu
+│ Customer Support Expert            │
+│ Lorem ipsum dolor sit amet...      │
+│                                    │
+│ 📅 4 Mar, 2026     ≡ 4/12          │  ← Data e Progresso
+│ [👤👤👤👤]  💬 8    📎 8            │  ← Avatares, Comentários, Anexos
+└─────────────────────────────────────┘
 ```
 
-### 3.2 Jornada Secundária A — Criar Nova Tarefa
+#### Componentes do Card
+- **Badges (Priority/Category):** 
+  - "Urgente" (vermelho)
+  - "Interno" (amarelo/laranja)
+  - "Interno" (verde)
+  - Menu contextual (...) para ações adicionais
+  
+- **Título:** Texto em negrito, tamanho maior (16px ou similar)
 
-```
-1. Usuário clica no botão "+" na coluna desejada
-   ↓
-2. Sistema abre modal ou inline form para criação de task
-   ↓
-3. Usuário preenche título, descrição, tags, data, assignees
-   ↓
-4. Usuário confirma — card aparece na coluna correspondente
-```
+- **Descrição:** Texto descritivo em cinzento (gray-500 ou similar), tamanho menor (14px)
 
-### 3.3 Jornada Secundária B — Mover Tarefa Entre Colunas
+- **Data:** Ícone de calendário + data formatada (DD Mmm, YYYY)
 
-```
-1. Usuário arrasta um card de uma coluna para outra (Drag & Drop)
-   ↓
-2. Sistema atualiza o status da tarefa
-   ↓
-3. Contadores de cada coluna são atualizados
-```
+- **Progresso de Subtarefas:** Ícone de lista + formato "X/Y" (ex: 4/12)
 
-### 3.4 Jornada Secundária C — Buscar Tarefa
+- **Avatares de Membros:** Até 4 avatares em pilha, com indicador "+N" se houver mais
 
-```
-1. Usuário clica na barra de busca no topo
-   ↓
-2. Digita palavras-chave do título ou descrição
-   ↓
-3. Sistema filtra e exibe resultados em tempo real
-```
+- **Ações Rápidas:**
+  - Ícone de comentário (💬) + número
+  - Ícone de anexo (📎) + número
 
-### 3.5 Estados da Tela
+#### Cores dos Badges
+- **Urgente:** Vermelho (#FF5858 ou similar)
+- **Interno:** Amarelo (#FFB81C ou similar)
+- **Interno:** Verde (#1FBF8F ou similar)
 
-| Estado | Descrição |
-|---|---|
-| Estado com dados | Colunas populadas com cards (estado exibido no design) |
-| Estado vazio | Colunas sem cards — exibir mensagem de "Nenhuma tarefa" + CTA |
-| Estado carregando | Skeleton loader nas colunas/cards |
-| Estado de erro | Toast/banner de erro ao falhar carregamento |
-| Estado filtrado | Tabs alteram quais colunas/cards são exibidos |
+### 2.4 Seção de Membros (Top Right)
+
+- **Avatares Empilhados:** Exibe até 5 avatares dos membros do projeto
+- **Indicador "+N":** Mostra "+" + número se houver mais membros
+- **Botão de Ação:** Ícone "+" ao lado para adicionar novo membro
 
 ---
 
-## 4. Histórias de Usuário
+## 3. Funcionalidades Identificadas
 
-### US-01: Visualizar Board de Tarefas
+### 3.1 Gerenciamento de Tarefas
+- **Visualização em Kanban:** Tarefas organizadas por status (Backlog, Pendentes, Concluídas)
+- **Criação de Tarefas:** Botão "+" em cada coluna permite criar nova tarefa
+- **Edição de Tarefas:** Presumivelmente, clicar no card abre detalhes/editor
+- **Drag & Drop:** Likely permite mover tarefas entre colunas (implementação esperada)
+
+### 3.2 Filtros e Busca
+- **Busca por Texto:** Campo de busca na parte superior
+- **Filtros Rápidos:** Badges de filtro (Urgente, Interno, etc.)
+- **Abas por Status:** Alternar entre Todos, Pendentes, Concluídas
+
+### 3.3 Colaboração
+- **Atribuição de Membros:** Avatares indicam quem está trabalhando na tarefa
+- **Comentários:** Contador de comentários em cada card
+- **Anexos:** Contador de anexos/arquivos na tarefa
+
+### 3.4 Rastreamento de Progresso
+- **Subtarefas:** Contador "X/Y" mostra progresso (ex: 4/12)
+- **Datas:** Datas de vencimento para cada tarefa
+
+### 3.5 Navegação Secundária
+- **Menu Lateral:** Acesso rápido a Home, Notificações, Tarefas e Analytics
+- **Avatar do Usuário:** Acesso ao perfil/logout
+
+---
+
+## 4. User Stories Sugeridas
+
+### US-1: Visualizar Tarefas em Kanban
 ```
-Como membro do time,
-quero visualizar todas as tarefas organizadas em colunas Kanban,
-para entender o status atual do trabalho do time de forma rápida.
+Como usuário,
+Quero visualizar minhas tarefas organizadas em colunas por status (Backlog, Pendentes, Concluídas),
+Para ter uma visão clara do progresso do trabalho.
 
-Critérios de Aceitação:
-- [ ] O board deve exibir no mínimo as colunas: Backlog, Pendentes, Concluídas
-- [ ] Cada coluna deve exibir a contagem de tarefas no header
-- [ ] Cada card deve mostrar: título, descrição, tags, data, assignees, progresso, anexos e comentários
-- [ ] O board deve ser acessível pelo menu lateral em "Tarefas"
-```
-
-### US-02: Criar Nova Tarefa
-```
-Como membro do time,
-quero criar uma nova tarefa em qualquer coluna do board,
-para registrar novos trabalhos a serem realizados.
-
-Critérios de Aceitação:
-- [ ] Deve haver um botão "+" em cada coluna para criar tarefa
-- [ ] O formulário deve aceitar: título (obrigatório), descrição, tags, data, assignees
-- [ ] A tarefa criada deve aparecer imediatamente na coluna correspondente
-- [ ] O contador da coluna deve ser incrementado após a criação
-```
-
-### US-03: Filtrar Tarefas por Status
-```
-Como membro do time,
-quero filtrar as tarefas por status (Todos / Pendentes / Concluídas),
-para focar nas tarefas relevantes ao meu contexto atual.
-
-Critérios de Aceitação:
-- [ ] As tabs "Todos", "Pendentes" e "Concluídas" devem estar visíveis acima do board
-- [ ] A tab ativa deve ter destaque visual (pill roxo)
-- [ ] Ao clicar em "Pendentes", apenas cards pendentes devem ser exibidos
-- [ ] Ao clicar em "Concluídas", apenas cards concluídos devem ser exibidos
-- [ ] "Todos" exibe todas as colunas e cards
-```
-
-### US-04: Mover Tarefa Entre Colunas
-```
-Como membro do time,
-quero mover uma tarefa de uma coluna para outra via drag & drop,
-para atualizar o status da tarefa de forma intuitiva.
-
-Critérios de Aceitação:
-- [ ] O usuário deve poder arrastar um card de uma coluna para outra
-- [ ] O status da tarefa deve ser atualizado automaticamente
-- [ ] Os contadores de cada coluna devem ser atualizados em tempo real
-- [ ] A operação deve ser refletida para todos os usuários (real-time ou ao recarregar)
+Critérios de Aceite:
+- A tela exibe 3 colunas: Backlog, Pendentes e Concluídas
+- Cada coluna mostra o número total de tarefas
+- Cada card exibe: título, descrição, data, badges de prioridade, avatares de membros, contadores de comentários/anexos
+- Os cards são exibidos em ordem consistente
 ```
 
-### US-05: Buscar Tarefa
+### US-2: Criar Nova Tarefa
 ```
-Como membro do time,
-quero buscar tarefas pelo nome ou descrição,
-para localizar rapidamente uma tarefa específica sem precisar rolar o board.
+Como usuário,
+Quero clicar em um botão "+" em qualquer coluna para criar uma nova tarefa,
+Para adicionar novos itens de trabalho ao quadro.
 
-Critérios de Aceitação:
-- [ ] A barra de busca deve estar visível no topo da tela
-- [ ] A busca deve funcionar com texto parcial (mínimo 2 caracteres)
-- [ ] Os resultados devem ser exibidos em tempo real (debounce ~300ms)
-- [ ] Sem resultados deve exibir mensagem de "Nenhuma tarefa encontrada"
-```
-
-### US-06: Ver Detalhes de uma Tarefa
-```
-Como membro do time,
-quero clicar em um card para ver todos os seus detalhes,
-para obter informações completas sobre a tarefa, seus comentários e anexos.
-
-Critérios de Aceitação:
-- [ ] Clicar no card deve abrir um modal ou página de detalhe
-- [ ] O detalhe deve exibir: título, descrição completa, checklist, comentários, anexos, assignees e histórico
-- [ ] Deve ser possível editar a tarefa diretamente na tela de detalhe
-- [ ] Deve ser possível fechar/voltar ao board sem perder o estado
+Critérios de Aceite:
+- Um botão "+" é exibido em cada coluna (Backlog, Pendentes, Concluídas)
+- Ao clicar, abre um formulário/modal para criar tarefa
+- A tarefa é adicionada à coluna selecionada
 ```
 
-### US-07: Ver Notificações
+### US-3: Filtrar Tarefas por Prioridade/Categoria
 ```
-Como membro do time,
-quero receber notificações sobre atualizações em tarefas que me envolvem,
-para me manter informado sem precisar verificar o board constantemente.
+Como usuário,
+Quero usar badges de filtro (Urgente, Interno, etc.) para filtrar tarefas,
+Para focar apenas nas tarefas que correspondem ao meu critério.
 
-Critérios de Aceitação:
-- [ ] O ícone de sino no header deve exibir badge com contagem de notificações não lidas
-- [ ] Clicar no sino deve abrir painel de notificações
-- [ ] As notificações devem indicar: qual tarefa mudou, quem fez a mudança e quando
+Critérios de Aceite:
+- Badges "Urgente", "Interno" funcionam como filtros
+- Clicar em um badge filtra as tarefas exibidas
+- Múltiplos filtros podem ser aplicados simultaneamente
+- Um indicador mostra quantos filtros estão ativos
+```
+
+### US-4: Buscar Tarefas por Texto
+```
+Como usuário,
+Quero usar a barra de busca para encontrar tarefas por nome,
+Para localizar rapidamente uma tarefa específica.
+
+Critérios de Aceite:
+- O campo "Pesquise suas tarefas" permite entrada de texto
+- A busca filtra em tempo real conforme digito
+- Busca funciona em títulos, descrições e nomes de membros
+- Há um botão para limpar a busca (X)
+```
+
+### US-5: Visualizar Detalhes da Tarefa
+```
+Como usuário,
+Quero clicar em um card para visualizar/editar detalhes completos da tarefa,
+Para gerenciar todos os aspectos da tarefa (descrição, membros, comentários, anexos).
+
+Critérios de Aceite:
+- Clicar em um card abre um painel/modal de detalhes
+- O painel mostra título, descrição, data, membros, comentários, anexos
+- Permite editar qualquer campo
+- Permite adicionar/remover membros, comentários e anexos
+```
+
+### US-6: Atualizar Status da Tarefa
+```
+Como usuário,
+Quero mover uma tarefa para outra coluna via drag & drop,
+Para atualizar o status da tarefa (Backlog → Pendentes → Concluídas).
+
+Critérios de Aceite:
+- Arrastar um card para outra coluna o move
+- O status é atualizado no backend
+- A tarefa aparece na nova coluna imediatamente
+- É possível desfazer a ação (ou confirmar antes de mover)
+```
+
+### US-7: Visualizar Membros da Tarefa
+```
+Como usuário,
+Quero ver os avatares dos membros atribuídos a cada tarefa,
+Para identificar rapidamente quem está trabalhando em cada item.
+
+Critérios de Aceite:
+- Até 4 avatares são exibidos por tarefa
+- Um indicador "+N" mostra quantos membros adicionais estão atribuídos
+- Hover sobre os avatares mostra o nome do membro
+- Clicar no avatar pode abrir perfil do membro
+```
+
+### US-8: Gerenciar Membros do Projeto
+```
+Como usuário (admin),
+Quero clicar no botão "+" ao lado dos avatares no topo direito para adicionar membros,
+Para incluir colaboradores no projeto.
+
+Critérios de Aceite:
+- Botão "+" abre modal de adicionar membro
+- Permite buscar usuários por email ou nome
+- Mostra lista de membros atuais
+- Permite remover membros (com confirmação)
+```
+
+### US-9: Visualizar Progresso de Subtarefas
+```
+Como usuário,
+Quero ver o indicador de progresso (X/Y) em cada card,
+Para acompanhar quantas subtarefas foram concluídas.
+
+Critérios de Aceite:
+- Cada card exibe um contador "X/Y" (ex: 4/12)
+- O número é atualizado quando subtarefas são concluídas
+- Clicar no contador abre a lista de subtarefas
+```
+
+### US-10: Ver Contador de Comentários e Anexos
+```
+Como usuário,
+Quero ver os ícones de comentários (💬) e anexos (📎) com contadores,
+Para saber quantas discussões e arquivos estão associados a cada tarefa.
+
+Critérios de Aceite:
+- Ícone de comentário mostra número de comentários
+- Ícone de anexo mostra número de anexos
+- Clicar em qualquer um abre a seção correspondente
+```
+
+### US-11: Filtrar por Abas de Status
+```
+Como usuário,
+Quero clicar nas abas "Todos", "Pendentes" e "Concluídas",
+Para alternar rapidamente entre visualizações por status.
+
+Critérios de Aceite:
+- A aba "Todos" mostra todas as tarefas (3 colunas)
+- A aba "Pendentes" mostra apenas tarefas com status "Pendentes"
+- A aba "Concluídas" mostra apenas tarefas com status "Concluídas"
+- A aba ativa é destacada (roxo/purple)
 ```
 
 ---
 
-## 5. Critérios de Aceitação Globais
+## 5. Critérios de Aceite Gerais
 
-### Board Kanban
-- [ ] Deve ser responsivo (adaptar para telas menores com scroll horizontal no board)
-- [ ] Cards devem suportar drag & drop entre colunas
-- [ ] Contadores de coluna devem refletir o estado atual em tempo real
-- [ ] Botão "+" deve estar presente em cada coluna
+### Frontend
+- [ ] Layout Kanban com 3 colunas (ou dinamicamente baseado na aba selecionada)
+- [ ] Cada card exibe todos os componentes conforme design
+- [ ] Barra de busca funciona em tempo real
+- [ ] Filtros por badges funcionam
+- [ ] Abas de status permitem alternar visualizações
+- [ ] Botões "+" em cada coluna permitem criar tarefas
+- [ ] Menu contextual (...) em cada card funciona
+- [ ] Avatares de membros são exibidos corretamente
+- [ ] Contadores de comentários/anexos são precisos
 
-### Cards
-- [ ] Devem exibir tags coloridas por tipo (Urgente = vermelho, Interno = roxo/verde)
-- [ ] Devem exibir avatares dos assignees (máx. 5 visíveis + overflow)
-- [ ] Devem exibir data, progresso de checklist (X/Y), contagem de anexos e comentários
-- [ ] Devem ter menu de contexto "⋯" com ações: Editar, Mover, Arquivar, Excluir
+### Backend / API
+- [ ] Endpoint GET /tasks retorna tarefas com status
+- [ ] Endpoint POST /tasks cria nova tarefa
+- [ ] Endpoint PATCH /tasks/:id atualiza tarefa (status, assignees, etc.)
+- [ ] Endpoint DELETE /tasks/:id remove tarefa
+- [ ] Endpoint GET /tasks com filtros (status, priority, search)
+- [ ] Endpoint GET /members retorna membros do projeto
+- [ ] Endpoint POST /members adiciona novo membro
+- [ ] Endpoint DELETE /members/:id remove membro
 
-### Navegação
-- [ ] Menu lateral deve permanecer fixo e visível em todas as telas
-- [ ] Item ativo do menu deve ter destaque visual
-- [ ] A busca global deve estar sempre acessível no header
-
----
-
-## 6. Arquitetura de Informação
-
-### Hierarquia Visual
-```
-App: Task View
-├── Header (fixo)
-│   ├── Logo/Nome
-│   ├── Busca Global
-│   ├── Notificações
-│   └── Avatar do Usuário
-├── Sidebar (fixo)
-│   ├── Home
-│   ├── Notificação
-│   ├── Tarefas (atual)
-│   └── Analytics
-└── Área Principal
-    ├── Filtros / Tabs (Todos | Pendentes | Concluídas)
-    ├── Membros do Time (avatares + adicionar)
-    └── Board Kanban
-        ├── Coluna: Backlog (N tarefas)
-        │   └── Cards (título, descrição, tags, data, assignees, métricas)
-        ├── Coluna: Pendentes (N tarefas)
-        │   └── Cards
-        └── Coluna: Concluídas (N tarefas)
-            └── Cards
-```
-
-### Entidade: Tarefa (Task/Card)
-| Campo | Tipo | Obrigatório | Observações |
-|---|---|---|---|
-| id | UUID | Sim | Gerado automaticamente |
-| título | String | Sim | Exibido em negrito no card |
-| descrição | Text | Não | Texto livre |
-| status | Enum | Sim | backlog \| pendente \| concluída |
-| tags | Array<Tag> | Não | Ex: Urgente, Interno |
-| data_vencimento | Date | Não | Exibida no card |
-| assignees | Array<User> | Não | Máx. 5 visíveis no card |
-| checklist_total | Integer | Não | Total de itens do checklist |
-| checklist_done | Integer | Não | Itens concluídos |
-| attachments_count | Integer | Não | Contagem de anexos |
-| comments_count | Integer | Não | Contagem de comentários |
-| created_at | DateTime | Sim | Automático |
-| updated_at | DateTime | Sim | Automático |
+### UX/UI
+- [ ] Feedback visual ao mover tarefas (drag & drop)
+- [ ] Confirmar antes de deletar tarefas
+- [ ] Mensagens de sucesso/erro para ações
+- [ ] Loading states enquanto dados são carregados
+- [ ] Responsividade para diferentes tamanhos de tela
 
 ---
 
-## 7. Design Patterns Identificados
+## 6. Observações sobre UX/UI
 
-### Padrões de Navegação
-- ✅ **Sidebar fixa** com ícones + labels
-- ✅ **Top navigation bar** com busca central
-- ✅ **Tab/Pill navigation** para filtros rápidos
+### Pontos Fortes
+1. **Clareza Visual:** Código de cores consistente (vermelho para urgente, verde para concluído)
+2. **Densidade de Informação:** Balance bem equilibrado entre informações e espaço
+3. **Hierarquia Visual:** Títulos em negrito, descrições em cinzento, mantendo foco
+4. **Ícones Funcionais:** Uso de ícones reconhecíveis (calendário, comentário, anexo)
+5. **Avatares Empilhados:** Técnica eficiente para mostrar múltiplos membros sem poluição visual
+6. **Menu Lateral Minimalista:** Fácil navegação sem distrações
 
-### Padrões de Conteúdo
-- ✅ **Kanban board** (colunas com cards arrastaveis)
-- ✅ **Card-based layout** com informações densas mas organizadas
-- ✅ **Avatares com overflow** (ex: +5 membros)
-
-### Padrões de Interação
-- ✅ **Drag and drop** (inferido pela natureza Kanban)
-- ✅ **Contextual menu** (⋯ em cada card)
-- ✅ **Search bar** com placeholder descritivo
-- ✅ **Inline counters** para contagens (tarefas por coluna)
-
-### Padrões Visuais
-- ✅ **Color coding** para tags de prioridade (Urgente = vermelho, Interno = roxo/verde)
-- ✅ **Avatar stacking** para múltiplos assignees
-- ✅ **Badge/pill** para tabs e status
-- ✅ **Icon + number** para métricas (anexos, comentários, checklist)
+### Melhorias Sugeridas
+1. **Indicador de Hover:** Adicionar feedback visual ao passar o mouse sobre um card (sombra, border)
+2. **Drag & Drop Visual:** Mostrar placeholder/feedback visual ao arrastar um card
+3. **Contador Dinâmico de Colunas:** Atualizar automaticamente o contador (10 tarefas) quando tarefa é movida
+4. **Estado Vazio:** Adicionar mensagem "Nenhuma tarefa" quando coluna está vazia
+5. **Priorização Visual:** Considerar ícone de prioridade (star, flag) além da cor
+6. **Data de Vencimento:** Destacar tarefas vencidas (cor vermelha na data)
+7. **Tooltip na Busca:** Sugerir termos de busca ou mostrar histórico
+8. **Responsividade Horizontal:** Considerar scroll horizontal em telas menores ou modo comprimido
+9. **Ações Rápidas no Hover:** Mostrar botão de menu (...) apenas ao hover (melhor economia de espaço)
+10. **Indicador de Sincronização:** Mostrar status de sincronização (saving, saved) ao editar tarefas em tempo real
 
 ---
 
-## 8. Notas de Design Visual
+## 7. Stack e Tecnologias Presumidas
 
-### Paleta de Cores
-| Uso | Cor |
-|---|---|
-| Primária / Destaque | Roxo/Violeta (#7C3AED aproximado) |
-| Tag Urgente | Vermelho/Rosa claro |
-| Tag Interno (variante 1) | Roxo claro |
-| Tag Interno (variante 2) | Verde claro |
-| Background do app | Branco (#FFFFFF) |
-| Background dos cards | Branco (#FFFFFF) com sombra leve |
-| Background da sidebar | Branco / levemente acinzentado |
-| Texto principal | Cinza escuro / Preto |
-| Texto secundário | Cinza médio |
+Com base no design e contexto:
 
-### Tipografia
-- **Título do app**: Negrito, tamanho grande (~20px)
-- **Título das colunas**: Negrito, tamanho médio (~16px)
-- **Título dos cards**: Negrito, tamanho médio (~14px)
-- **Descrição dos cards**: Regular, tamanho pequeno (~12px), cor cinza
-- **Labels e tags**: Pequeno, pill/badge colorido
+### Frontend
+- **Framework:** React.js (presumido, considerando o projeto é uma ferramenta colaborativa moderna)
+- **UI Library:** Componentes customizados ou Material-UI/Chakra UI
+- **Styling:** Tailwind CSS (baseado na paleta de cores limpa)
+- **State Management:** Redux/Context API para gerenciar tarefas globalmente
+- **Drag & Drop:** React Beautiful DnD ou dnd-kit para Kanban
+- **Busca:** Implementação custom com debounce
 
-### Layout
-- **Sidebar**: ~160px de largura, fixo à esquerda
-- **Board**: Layout horizontal com scroll (colunas fixas visíveis ~3)
-- **Cards**: Largura fixa (~250px), altura variável
-- **Espaçamento**: Generoso entre cards (~12-16px gap)
+### Backend (Presumido)
+- **API:** REST ou GraphQL
+- **Autenticação:** JWT (baseado no avatar "DS" do usuário)
+- **Database:** PostgreSQL/MongoDB para persistir tarefas
+- **Real-time (opcional):** WebSocket para colaboração em tempo real
 
 ---
 
-## 9. Observações sobre UX
+## 8. Fora do Escopo Desta Análise
 
-### Pontos Positivos
-- Layout Kanban familiar — curva de aprendizado baixa para usuários de Trello/Jira
-- Cards informativos com dados essenciais visíveis sem necessidade de abrir
-- Uso de avatares para visualizar assignees rapidamente
-- Filtros por tab simples e diretos (Todos / Pendentes / Concluídas)
-- Barra de busca central e sempre acessível
-- Tags coloridas permitem identificação rápida de prioridade/tipo
-
-### Oportunidades de Melhoria
-- Não há indicação de prioridade além das tags (poderia ter ordenação por prioridade)
-- As colunas têm contadores mas não há indicador visual de carga excessiva (WIP limit)
-- Os filtros de tab poderiam ser combinados com filtros por membro/assignee
-- Não é visível uma opção de visualização alternativa (lista vs. board)
-
-### Questões em Aberto
-- É possível criar novas colunas customizadas além das 3 padrão?
-- O drag & drop é o único meio de mover cards entre colunas, ou há opção no menu contextual?
-- Existe funcionalidade de sub-tarefas além do checklist?
-- O campo "Analytics" no menu leva a qual tipo de dashboard?
-- Como funciona a integração/atribuição de membros ao board?
+- Implementação de drag & drop (foco na estrutura visual)
+- Animações e transições em detalhe
+- Responsividade completa (foco em desktop)
+- Integração com sistemas externos
+- Sistema de notificações em detalhes
+- Analytics (seção de menu, mas não visível no design)
 
 ---
 
-## 10. Dependências e Relacionamentos
+## 9. Próximos Passos Recomendados
 
-### APIs Necessárias
-| Método | Endpoint | Descrição |
-|---|---|---|
-| GET | `/api/boards/:id/columns` | Listar colunas com tarefas |
-| GET | `/api/tasks?board=:id` | Listar tarefas por board |
-| POST | `/api/tasks` | Criar nova tarefa |
-| PUT | `/api/tasks/:id` | Atualizar tarefa (status, dados) |
-| PATCH | `/api/tasks/:id/move` | Mover tarefa entre colunas |
-| DELETE | `/api/tasks/:id` | Excluir tarefa |
-| GET | `/api/users?board=:id` | Listar membros do board |
-| GET | `/api/notifications` | Listar notificações do usuário |
-
-### Permissões
-- Usuário deve estar autenticado
-- Usuário deve ser membro do board para visualizar
-- Apenas admin pode adicionar/remover membros do board
-- Todos os membros podem criar, editar e mover tarefas
-
-### Integrações
-- Sistema de autenticação (avatar + iniciais do usuário visíveis no header)
-- Sistema de notificações em tempo real (ícone de sino)
-- Armazenamento de arquivos para anexos
+1. **Validação com Stakeholders:** Confirmar se todas as user stories cobrem os requisitos
+2. **Prototipagem de Interações:** Criar protótipo interativo para validar UX de drag & drop
+3. **Especificação de API:** Detalhar endpoints, payload de requisições/respostas
+4. **Design System:** Documentar componentes, cores, tipografia
+5. **Testes:** Planejar testes unitários (componentes), integração (API) e E2E (fluxos completos)
+6. **Acessibilidade:** WCAG 2.1 AA compliance (ARIA labels, teclado, contraste)
 
 ---
 
-## 11. Próximos Passos
+## 10. Referências
 
-- [x] Análise inicial da tela realizada
-- [ ] Validar análise com designer responsável
-- [ ] Validar modelo de dados com tech lead
-- [ ] Desdobrar em stories técnicas (Frontend + Backend)
-- [ ] Estimar complexidade (Story Points)
-- [ ] Priorizar features para MVP vs. iterações futuras
-- [ ] Definir WIP limits por coluna (se aplicável)
-- [ ] Especificar comportamento responsivo / mobile
+- **Figma File:** https://www.figma.com/design/ik0Qa30O9oNUy3qelJbQO7/Ferramenta-Trello
+- **Inspiração:** Trello, Jira, Monday.com
+- **Padrões Observados:** Kanban, Material Design, Modern Web UI
 
 ---
 
-## Anexo: Referências Visuais
+**Fim da Análise**
 
-**Figma Design:** [Abrir no Figma](https://www.figma.com/design/ik0Qa30O9oNUy3qelJbQO7/Ferramenta-Trello?node-id=1-2)
-
-**Screenshot capturado em:** 2026-04-01
-
-> A tela exibe um board Kanban com três colunas (Backlog: 10 tarefas, Pendentes: 2 tarefas, Concluídas: 3 tarefas), cada uma contendo cards com título "Customer Support Expert", tags de prioridade/tipo (Urgente, Interno), data (4 Mar. 2026), progresso de checklist (4/12), avatares de assignees, contagem de anexos (8) e comentários (8). A sidebar à esquerda contém: Home, Notificação, Tarefas, Analytics. O header contém a busca global e avatar do usuário.
-
----
-
-**Análise realizada em:** 2026-04-01
-**Analisado por:** FusionCode PO Agent
-**Status:** ✅ Concluído
+Relatório preparado por: PO Agent  
+Data: 2026-04-01
