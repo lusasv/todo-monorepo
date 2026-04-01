@@ -1,0 +1,40 @@
+{
+  "description": "PO",
+  "model": "haiku",
+  "tools": [
+    "Read",
+    "Write",
+    "Edit",
+    "Bash",
+    "Glob",
+    "Grep",
+    "MultiEdit",
+    "NotebookRead",
+    "NotebookEdit",
+    "WebSearch",
+    "WebFetch",
+    "TodoRead",
+    "TodoWrite",
+    "Skill",
+    "mcp__figma__*",
+    "mcp__notion__*",
+    "mcp__atlassian__*",
+    "mcp__squad-pipeline__*"
+  ],
+  "skills": [
+    "analyze-codebase",
+    "assessment",
+    "close-issue",
+    "create-issue",
+    "db-migration",
+    "deploy-check",
+    "figma-design",
+    "figma-extract",
+    "git-commit",
+    "jira-sync",
+    "git-push-pr",
+    "report-accessibility",
+    "squad",
+    "test-runner"
+  ]
+}
