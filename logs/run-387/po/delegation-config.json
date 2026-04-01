@@ -1,0 +1,23 @@
+{
+  "description": "PO",
+  "model": "haiku",
+  "tools": [
+    "Read",
+    "Write",
+    "Edit",
+    "Bash",
+    "Glob",
+    "Grep",
+    "MultiEdit",
+    "NotebookRead",
+    "NotebookEdit",
+    "WebSearch",
+    "WebFetch",
+    "TodoRead",
+    "TodoWrite",
+    "mcp__figma__*",
+    "mcp__notion__*",
+    "mcp__atlassian__*",
+    "mcp__squad-pipeline__*"
+  ]
+}

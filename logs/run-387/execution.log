@@ -1,0 +1,1969 @@
+================================================================================
+AGENT START — master
+================================================================================
+Timestamp: 2026-04-01T17:09:28.142Z
+Run ID:    387
+Agent:     master
+Model:     sonnet
+Provider:  claude
+MaxTurns:  200
+CWD:       /Users/user/tmp/_squad_remote/run-387/repo
+Plugin:    /Users/user/tmp/_squad_remote/run-387/repo/.fusion-plugin
+
+──────────────────────────────────────── TOOLS (14) ────────────────────────────────────────
+  - Read
+  - Write
+  - Edit
+  - Bash
+  - Glob
+  - Grep
+  - WebSearch
+  - WebFetch
+  - Agent
+  - Skill
+  - mcp__figma__*
+  - mcp__notion__*
+  - mcp__atlassian__*
+  - mcp__squad-pipeline__*
+
+
+──────────────────────────────────────── MCPs (4) ────────────────────────────────────────
+  - figma
+  - notion
+  - atlassian
+  - squad-pipeline
+
+──────────────────────────────────────── MCP CONFIGS ────────────────────────────────────────
+{
+  "figma": {
+    "url": "https://mcp.figma.com/mcp",
+    "type": "http",
+    "headers": {
+      "Authorization": "Bear...iewN"
+    }
+  },
+  "notion": {
+    "url": "https://mcp.notion.com/mcp",
+    "type": "http"
+  },
+  "atlassian": {
+    "url": "https://mcp.atlassian.com/v1/mcp",
+    "type": "http"
+  },
+  "squad-pipeline": {
+    "type": "sdk",
+    "name": "squad-pipeline",
+    "instance": {
+      "_registeredResources": {},
+      "_registeredResourceTemplates": {},
+      "_registeredTools": {
+        "advance_step": {
+          "description": "Report completion of a pipeline step agent. You MUST call this after each agent finishes its work. This updates the pipeline state and tells you what to do next.",
+          "inputSchema": {
+            "~standard": {
+              "validate": "[Function]",
+              "vendor": "zod",
+              "version": 1
+            },
+            "def": {
+              "type": "object",
+              "shape": {
+                "step": {
+                  "toJSONSchema": "[Function]",
+                  "def": {
+                    "type": "number",
+                    "checks": []
+                  },
+                  "type": "number",
+                  "check": "[Function]",
+                  "with": "[Function]",
+                  "clone": "[Function]",
+                  "brand": "[Function]",
+                  "register": "[Function]",
+                  "parse": "[Function]",
+                  "safeParse": "[Function]",
+                  "parseAsync": "[Function]",
+                  "safeParseAsync": "[Function]",
+                  "spa": "[Function]",
+                  "encode": "[Function]",
+                  "decode": "[Function]",
+                  "encodeAsync": "[Function]",
+                  "decodeAsync": "[Function]",
+                  "safeEncode": "[Function]",
+                  "safeDecode": "[Function]",
+                  "safeEncodeAsync": "[Function]",
+                  "safeDecodeAsync": "[Function]",
+                  "refine": "[Function]",
+                  "superRefine": "[Function]",
+                  "overwrite": "[Function]",
+                  "optional": "[Function]",
+                  "exactOptional": "[Function]",
+                  "nullable": "[Function]",
+                  "nullish": "[Function]",
+                  "nonoptional": "[Function]",
+                  "array": "[Function]",
+                  "or": "[Function]",
+                  "and": "[Function]",
+                  "transform": "[Function]",
+                  "default": "[Function]",
+                  "prefault": "[Function]",
+                  "catch": "[Function]",
+                  "pipe": "[Function]",
+                  "readonly": "[Function]",
+                  "describe": "[Function]",
+                  "meta": "[Function]",
+                  "isOptional": "[Function]",
+                  "isNullable": "[Function]",
+                  "apply": "[Function]",
+                  "gt": "[Function]",
+                  "gte": "[Function]",
+                  "min": "[Function]",
+                  "lt": "[Function]",
+                  "lte": "[Function]",
+                  "max": "[Function]",
+                  "int": "[Function]",
+                  "safe": "[Function]",
+                  "positive": "[Function]",
+                  "nonnegative": "[Function]",
+                  "negative": "[Function]",
+                  "nonpositive": "[Function]",
+                  "multipleOf": "[Function]",
+                  "step": "[Function]",
+                  "finite": "[Function]",
+                  "minValue": null,
+                  "maxValue": null,
+                  "isInt": false,
+                  "isFinite": true,
+                  "format": null
+                },
+                "agent": {
+                  "toJSONSchema": "[Function]",
+                  "def": {
+                    "type": "string"
+                  },
+                  "type": "string",
+                  "check": "[Function]",
+                  "with": "[Function]",
+                  "clone": "[Function]",
+                  "brand": "[Function]",
+                  "register": "[Function]",
+                  "parse": "[Function]",
+                  "safeParse": "[Function]",
+                  "parseAsync": "[Function]",
+                  "safeParseAsync": "[Function]",
+                  "spa": "[Function]",
+                  "encode": "[Function]",
+                  "decode": "[Function]",
+                  "encodeAsync": "[Function]",
+                  "decodeAsync": "[Function]",
+                  "safeEncode": "[Function]",
+                  "safeDecode": "[Function]",
+                  "safeEncodeAsync": "[Function]",
+                  "safeDecodeAsync": "[Function]",
+                  "refine": "[Function]",
+                  "superRefine": "[Function]",
+                  "overwrite": "[Function]",
+                  "optional": "[Function]",
+                  "exactOptional": "[Function]",
+                  "nullable": "[Function]",
+                  "nullish": "[Function]",
+                  "nonoptional": "[Function]",
+                  "array": "[Function]",
+                  "or": "[Function]",
+                  "and": "[Function]",
+                  "transform": "[Function]",
+                  "default": "[Function]",
+                  "prefault": "[Function]",
+                  "catch": "[Function]",
+                  "pipe": "[Function]",
+                  "readonly": "[Function]",
+                  "describe": "[Function]",
+                  "meta": "[Function]",
+                  "isOptional": "[Function]",
+                  "isNullable": "[Function]",
+                  "apply": "[Function]",
+                  "format": null,
+                  "minLength": null,
+                  "maxLength": null,
+                  "regex": "[Function]",
+                  "includes": "[Function]",
+                  "startsWith": "[Function]",
+                  "endsWith": "[Function]",
+                  "min": "[Function]",
+                  "max": "[Function]",
+                  "length": "[Function]",
+                  "nonempty": "[Function]",
+                  "lowercase": "[Function]",
+                  "uppercase": "[Function]",
+                  "trim": "[Function]",
+                  "normalize": "[Function]",
+                  "toLowerCase": "[Function]",
+                  "toUpperCase": "[Function]",
+                  "slugify": "[Function]",
+                  "email": "[Function]",
+                  "url": "[Function]",
+                  "jwt": "[Function]",
+                  "emoji": "[Function]",
+                  "guid": "[Function]",
+                  "uuid": "[Function]",
+                  "uuidv4": "[Function]",
+                  "uuidv6": "[Function]",
+                  "uuidv7": "[Function]",
+                  "nanoid": "[Function]",
+                  "cuid": "[Function]",
+                  "cuid2": "[Function]",
+                  "ulid": "[Function]",
+                  "base64": "[Function]",
+                  "base64url": "[Function]",
+                  "xid": "[Function]",
+                  "ksuid": "[Function]",
+                  "ipv4": "[Function]",
+                  "ipv6": "[Function]",
+                  "cidrv4": "[Function]",
+                  "cidrv6": "[Function]",
+                  "e164": "[Function]",
+                  "datetime": "[Function]",
+                  "date": "[Function]",
+                  "time": "[Function]",
+                  "duration": "[Function]"
+                },
+                "status": {
+                  "toJSONSchema": "[Function]",
+                  "def": {
+                    "type": "enum",
+                    "entries": {
+                      "completed": "completed",
+                      "failed": "failed"
+                    }
+                  },
+                  "type": "enum",
+                  "check": "[Function]",
+                  "with": "[Function]",
+                  "clone": "[Function]",
+                  "brand": "[Function]",
+                  "register": "[Function]",
+                  "parse": "[Function]",
+                  "safeParse": "[Function]",
+                  "parseAsync": "[Function]",
+                  "safeParseAsync": "[Function]",
+                  "spa": "[Function]",
+                  "encode": "[Function]",
+                  "decode": "[Function]",
+                  "encodeAsync": "[Function]",
+                  "decodeAsync": "[Function]",
+                  "safeEncode": "[Function]",
+                  "safeDecode": "[Function]",
+                  "safeEncodeAsync": "[Function]",
+                  "safeDecodeAsync": "[Function]",
+                  "refine": "[Function]",
+                  "superRefine": "[Function]",
+                  "overwrite": "[Function]",
+                  "optional": "[Function]",
+                  "exactOptional": "[Function]",
+                  "nullable": "[Function]",
+                  "nullish": "[Function]",
+                  "nonoptional": "[Function]",
+                  "array": "[Function]",
+                  "or": "[Function]",
+                  "and": "[Function]",
+                  "transform": "[Function]",
+                  "default": "[Function]",
+                  "prefault": "[Function]",
+                  "catch": "[Function]",
+                  "pipe": "[Function]",
+                  "readonly": "[Function]",
+                  "describe": "[Function]",
+                  "meta": "[Function]",
+                  "isOptional": "[Function]",
+                  "isNullable": "[Function]",
+                  "apply": "[Function]",
+                  "enum": "[Circular]",
+                  "options": [
+                    "completed",
+                    "failed"
+                  ],
+                  "extract": "[Function]",
+                  "exclude": "[Function]"
+                },
+                "summary": {
+                  "toJSONSchema": "[Function]",
+                  "def": {
+                    "type": "string"
+                  },
+                  "type": "string",
+                  "check": "[Function]",
+                  "with": "[Function]",
+                  "clone": "[Function]",
+                  "brand": "[Function]",
+                  "register": "[Function]",
+                  "parse": "[Function]",
+                  "safeParse": "[Function]",
+                  "parseAsync": "[Function]",
+                  "safeParseAsync": "[Function]",
+                  "spa": "[Function]",
+                  "encode": "[Function]",
+                  "decode": "[Function]",
+                  "encodeAsync": "[Function]",
+                  "decodeAsync": "[Function]",
+                  "safeEncode": "[Function]",
+                  "safeDecode": "[Function]",
+                  "safeEncodeAsync": "[Function]",
+                  "safeDecodeAsync": "[Function]",
+                  "refine": "[Function]",
+                  "superRefine": "[Function]",
+                  "overwrite": "[Function]",
+                  "optional": "[Function]",
+                  "exactOptional": "[Function]",
+                  "nullable": "[Function]",
+                  "nullish": "[Function]",
+                  "nonoptional": "[Function]",
+                  "array": "[Function]",
+                  "or": "[Function]",
+                  "and": "[Function]",
+                  "transform": "[Function]",
+                  "default": "[Function]",
+                  "prefault": "[Function]",
+                  "catch": "[Function]",
+                  "pipe": "[Function]",
+                  "readonly": "[Function]",
+                  "describe": "[Function]",
+                  "meta": "[Function]",
+                  "isOptional": "[Function]",
+                  "isNullable": "[Function]",
+                  "apply": "[Function]",
+                  "format": null,
+                  "minLength": null,
+                  "maxLength": null,
+                  "regex": "[Function]",
+                  "includes": "[Function]",
+                  "startsWith": "[Function]",
+                  "endsWith": "[Function]",
+                  "min": "[Function]",
+                  "max": "[Function]",
+                  "length": "[Function]",
+                  "nonempty": "[Function]",
+                  "lowercase": "[Function]",
+                  "uppercase": "[Function]",
+                  "trim": "[Function]",
+                  "normalize": "[Function]",
+                  "toLowerCase": "[Function]",
+                  "toUpperCase": "[Function]",
+                  "slugify": "[Function]",
+                  "email": "[Function]",
+                  "url": "[Function]",
+                  "jwt": "[Function]",
+                  "emoji": "[Function]",
+                  "guid": "[Function]",
+                  "uuid": "[Function]",
+                  "uuidv4": "[Function]",
+                  "uuidv6": "[Function]",
+                  "uuidv7": "[Function]",
+                  "nanoid": "[Function]",
+                  "cuid": "[Function]",
+                  "cuid2": "[Function]",
+                  "ulid": "[Function]",
+                  "base64": "[Function]",
+                  "base64url": "[Function]",
+                  "xid": "[Function]",
+                  "ksuid": "[Function]",
+                  "ipv4": "[Function]",
+                  "ipv6": "[Function]",
+                  "cidrv4": "[Function]",
+                  "cidrv6": "[Function]",
+                  "e164": "[Function]",
+                  "datetime": "[Function]",
+                  "date": "[Function]",
+                  "time": "[Function]",
+                  "duration": "[Function]"
+                }
+              }
+            },
+            "parse": "[Function]",
+            "safeParse": "[Function]",
+            "parseAsync": "[Function]",
+            "safeParseAsync": "[Function]",
+            "check": "[Function]",
+            "clone": "[Function]",
+            "brand": "[Function]",
+            "register": "[Function]"
+          },
+          "execution": {
+            "taskSupport": "forbidden"
+          },
+          "handler": "[Function]",
+          "enabled": true,
+          "disable": "[Function]",
+          "enable": "[Function]",
+          "remove": "[Function]",
+          "update": "[Function]"
+        },
+        "get_status": {
+          "description": "Get the current pipeline state: which steps are done, which is next, and what agents are pending.",
+          "inputSchema": {
+            "~standard": {
+              "validate": "[Function]",
+              "vendor": "zod",
+              "version": 1
+            },
+            "def": {
+              "type": "object",
+              "shape": {}
+            },
+            "parse": "[Function]",
+            "safeParse": "[Function]",
+            "parseAsync": "[Function]",
+            "safeParseAsync": "[Function]",
+            "check": "[Function]",
+            "clone": "[Function]",
+            "brand": "[Function]",
+            "register": "[Function]"
+          },
+          "execution": {
+            "taskSupport": "forbidden"
+          },
+          "handler": "[Function]",
+          "enabled": true,
+          "disable": "[Function]",
+          "enable": "[Function]",
+          "remove": "[Function]",
+          "update": "[Function]"
+        }
+      },
+      "_registeredPrompts": {},
+      "_toolHandlersInitialized": true,
+      "_completionHandlerInitialized": false,
+      "_resourceHandlersInitialized": false,
+      "_promptHandlersInitialized": false,
+      "server": {
+        "_options": {
+          "capabilities": {
+            "tools": {}
+          }
+        },
+        "_requestMessageId": 0,
+        "_requestHandlers": {},
+        "_requestHandlerAbortControllers": {},
+        "_notificationHandlers": {},
+        "_responseHandlers": {},
+        "_progressHandlers": {},
+        "_timeoutInfo": {},
+        "_pendingDebouncedNotifications": {},
+        "_taskProgressTokens": {},
+        "_requestResolvers": {},
+        "_serverInfo": {
+          "name": "squad-pipeline",
+          "version": "1.0.0"
+        },
+        "_loggingLevels": {},
+        "LOG_LEVEL_SEVERITY": {},
+        "isMessageIgnored": "[Function]",
+        "_capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "_jsonSchemaValidator": {
+          "_ajv": {
+            "schemas": {
+              "http://json-schema.org/draft-07/schema": {
+                "refs": {},
+                "dynamicAnchors": {},
+                "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "$id": "http://json-schema.org/draft-07/schema#",
+                  "title": "Core schema meta-schema",
+                  "definitions": {
+                    "schemaArray": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#"
+                      }
+                    },
+                    "nonNegativeInteger": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "nonNegativeIntegerDefault0": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/nonNegativeInteger"
+                        },
+                        {
+                          "default": 0
+                        }
+                      ]
+                    },
+                    "simpleTypes": {
+                      "enum": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "null",
+                        "number",
+                        "object",
+                        "string"
+                      ]
+                    },
+                    "stringArray": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "default": []
+                    }
+                  },
+                  "type": [
+                    "object",
+                    "boolean"
+                  ],
+                  "properties": {
+                    "$id": {
+                      "type": "string",
+                      "format": "uri-reference"
+                    },
+                    "$schema": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "$ref": {
+                      "type": "string",
+                      "format": "uri-reference"
+                    },
+                    "$comment": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "default": true,
+                    "readOnly": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "examples": {
+                      "type": "array",
+                      "items": true
+                    },
+                    "multipleOf": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "maximum": {
+                      "type": "number"
+                    },
+                    "exclusiveMaximum": {
+                      "type": "number"
+                    },
+                    "minimum": {
+                      "type": "number"
+                    },
+                    "exclusiveMinimum": {
+                      "type": "number"
+                    },
+                    "maxLength": {
+                      "$ref": "#/definitions/nonNegativeInteger"
+                    },
+                    "minLength": {
+                      "$ref": "#/definitions/nonNegativeIntegerDefault0"
+                    },
+                    "pattern": {
+                      "type": "string",
+                      "format": "regex"
+                    },
+                    "additionalItems": {
+                      "$ref": "#"
+                    },
+                    "items": {
+                      "anyOf": [
+                        {
+                          "$ref": "#"
+                        },
+                        {
+                          "$ref": "#/definitions/schemaArray"
+                        }
+                      ],
+                      "default": true
+                    },
+                    "maxItems": {
+                      "$ref": "#/definitions/nonNegativeInteger"
+                    },
+                    "minItems": {
+                      "$ref": "#/definitions/nonNegativeIntegerDefault0"
+                    },
+                    "uniqueItems": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "contains": {
+                      "$ref": "#"
+                    },
+                    "maxProperties": {
+                      "$ref": "#/definitions/nonNegativeInteger"
+                    },
+                    "minProperties": {
+                      "$ref": "#/definitions/nonNegativeIntegerDefault0"
+                    },
+                    "required": {
+                      "$ref": "#/definitions/stringArray"
+                    },
+                    "additionalProperties": {
+                      "$ref": "#"
+                    },
+                    "definitions": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#"
+                      },
+                      "default": {}
+                    },
+                    "properties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#"
+                      },
+                      "default": {}
+                    },
+                    "patternProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#"
+                      },
+                      "propertyNames": {
+                        "format": "regex"
+                      },
+                      "default": {}
+                    },
+                    "dependencies": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "anyOf": [
+                          {
+                            "$ref": "#"
+                          },
+                          {
+                            "$ref": "#/definitions/stringArray"
+                          }
+                        ]
+                      }
+                    },
+                    "propertyNames": {
+                      "$ref": "#"
+                    },
+                    "const": true,
+                    "enum": {
+                      "type": "array",
+                      "items": true,
+                      "minItems": 1,
+                      "uniqueItems": true
+                    },
+                    "type": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/simpleTypes"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/definitions/simpleTypes"
+                          },
+                          "minItems": 1,
+                          "uniqueItems": true
+                        }
+                      ]
+                    },
+                    "format": {
+                      "type": "string"
+                    },
+                    "contentMediaType": {
+                      "type": "string"
+                    },
+                    "contentEncoding": {
+                      "type": "string"
+                    },
+                    "if": {
+                      "$ref": "#"
+                    },
+                    "then": {
+                      "$ref": "#"
+                    },
+                    "else": {
+                      "$ref": "#"
+                    },
+                    "allOf": {
+                      "$ref": "#/definitions/schemaArray"
+                    },
+                    "anyOf": {
+                      "$ref": "#/definitions/schemaArray"
+                    },
+                    "oneOf": {
+                      "$ref": "#/definitions/schemaArray"
+                    },
+                    "not": {
+                      "$ref": "#"
+                    }
+                  },
+                  "default": true
+                },
+                "schemaId": "$id",
+                "root": "[Circular]",
+                "baseId": "http://json-schema.org/draft-07/schema",
+                "localRefs": {},
+                "meta": true
+              }
+            },
+            "refs": {
+              "http://json-schema.org/draft-07/schema": "[Circular]",
+              "http://json-schema.org/schema": "http://json-schema.org/draft-07/schema"
+            },
+            "formats": {
+              "date": {
+                "validate": "[Function]",
+                "compare": "[Function]"
+              },
+              "time": {
+                "validate": "[Function]",
+                "compare": "[Function]"
+              },
+              "date-time": {
+                "validate": "[Function]",
+                "compare": "[Function]"
+              },
+              "iso-time": {
+                "validate": "[Function]",
+                "compare": "[Function]"
+              },
+              "iso-date-time": {
+                "validate": "[Function]",
+                "compare": "[Function]"
+              },
+              "duration": {},
+              "uri": "[Function]",
+              "uri-reference": {},
+              "uri-template": {},
+              "url": {},
+              "email": {},
+              "hostname": {},
+              "ipv4": {},
+              "ipv6": {},
+              "regex": "[Function]",
+              "uuid": {},
+              "json-pointer": {},
+              "json-pointer-uri-fragment": {},
+              "relative-json-pointer": {},
+              "byte": "[Function]",
+              "int32": {
+                "type": "number",
+                "validate": "[Function]"
+              },
+              "int64": {
+                "type": "number",
+                "validate": "[Function]"
+              },
+              "float": {
+                "type": "number",
+                "validate": "[Function]"
+              },
+              "double": {
+                "type": "number",
+                "validate": "[Function]"
+              },
+              "password": true,
+              "binary": true
+            },
+            "_compilations": {},
+            "_loading": {},
+            "_cache": {},
+            "opts": {
+              "strict": false,
+              "validateFormats": true,
+              "validateSchema": false,
+              "allErrors": true,
+              "strictSchema": false,
+              "strictNumbers": false,
+              "strictTypes": false,
+              "strictTuples": false,
+              "strictRequired": false,
+              "code": {
+                "optimize": 1,
+                "regExp": "[Function]",
+                "formats": {
+                  "_items": [
+                    "require(\"ajv-formats/dist/formats\").",
+                    {
+                      "str": "fullFormats"
+                    },
+                    ""
+                  ]
+                }
+              },
+              "loopRequired": 200,
+              "loopEnum": 200,
+              "meta": true,
+              "messages": true,
+              "inlineRefs": true,
+              "schemaId": "$id",
+              "addUsedSchema": true,
+              "unicodeRegExp": true,
+              "int32range": true,
+              "uriResolver": {
+                "SCHEMES": {
+                  "http": {
+                    "scheme": "http",
+                    "domainHost": true,
+                    "parse": "[Function]",
+                    "serialize": "[Function]"
+                  },
+                  "https": {
+                    "scheme": "https",
+                    "domainHost": true,
+                    "parse": "[Function]",
+                    "serialize": "[Function]"
+                  },
+                  "ws": {
+                    "scheme": "ws",
+                    "domainHost": true,
+                    "parse": "[Function]",
+                    "serialize": "[Function]"
+                  },
+                  "wss": {
+                    "scheme": "wss",
+                    "domainHost": true,
+                    "parse": "[Function]",
+                    "serialize": "[Function]"
+                  },
+                  "urn": {
+                    "scheme": "urn",
+                    "parse": "[Function]",
+                    "serialize": "[Function]",
+                    "skipNormalize": true
+                  },
+                  "urn:uuid": {
+                    "scheme": "urn:uuid",
+                    "parse": "[Function]",
+                    "serialize": "[Function]",
+                    "skipNormalize": true
+                  }
+                },
+                "normalize": "[Function]",
+                "resolve": "[Function]",
+                "resolveComponents": "[Function]",
+                "equal": "[Function]",
+                "serialize": "[Function]",
+                "parse": "[Function]",
+                "default": "[Circular]",
+                "fastUri": "[Circular]",
+                "code": "require(\"ajv/dist/runtime/uri\").default"
+              }
+            },
+            "scope": {
+              "_names": {},
+              "_prefixes": {},
+              "_values": {},
+              "_scope": {},
+              "opts": {
+                "scope": "[Circular]",
+                "prefixes": "[Circular]",
+                "_n": {
+                  "_items": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "logger": {
+              "log": "[Function]",
+              "info": "[Function]",
+              "debug": "[Function]",
+              "warn": "[Function]",
+              "error": "[Function]",
+              "dir": "[Function]",
+              "time": "[Function]",
+              "timeEnd": "[Function]",
+              "timeLog": "[Function]",
+              "trace": "[Function]",
+              "assert": "[Function]",
+              "clear": "[Function]",
+              "count": "[Function]",
+              "countReset": "[Function]",
+              "group": "[Function]",
+              "groupEnd": "[Function]",
+              "table": "[Function]",
+              "dirxml": "[Function]",
+              "groupCollapsed": "[Function]",
+              "Console": "[Function]",
+              "profile": "[Function]",
+              "profileEnd": "[Function]",
+              "timeStamp": "[Function]",
+              "context": "[Function]",
+              "createTask": "[Function]"
+            },
+            "RULES": {
+              "types": {
+                "number": {
+                  "type": "number",
+                  "rules": [
+                    {
+                      "keyword": "maximum",
+                      "definition": {
+                        "keyword": [
+                          "maximum",
+                          "minimum",
+                          "exclusiveMaximum",
+                          "exclusiveMinimum"
+                        ],
+                        "type": [
+                          "number"
+                        ],
+                        "schemaType": [
+                          "number"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "minimum",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "exclusiveMaximum",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "exclusiveMinimum",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "multipleOf",
+                      "definition": {
+                        "keyword": "multipleOf",
+                        "type": [
+                          "number"
+                        ],
+                        "schemaType": [
+                          "number"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "format",
+                      "definition": {
+                        "keyword": "format",
+                        "type": [
+                          "number",
+                          "string"
+                        ],
+                        "schemaType": [
+                          "string"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    }
+                  ]
+                },
+                "string": {
+                  "type": "string",
+                  "rules": [
+                    {
+                      "keyword": "maxLength",
+                      "definition": {
+                        "keyword": [
+                          "maxLength",
+                          "minLength"
+                        ],
+                        "type": [
+                          "string"
+                        ],
+                        "schemaType": [
+                          "number"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "minLength",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "pattern",
+                      "definition": {
+                        "keyword": "pattern",
+                        "type": [
+                          "string"
+                        ],
+                        "schemaType": [
+                          "string"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "format",
+                      "definition": {
+                        "keyword": "format",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "formatMaximum",
+                      "definition": {
+                        "keyword": [
+                          "formatMaximum",
+                          "formatMinimum",
+                          "formatExclusiveMaximum",
+                          "formatExclusiveMinimum"
+                        ],
+                        "type": [
+                          "string"
+                        ],
+                        "schemaType": [
+                          "string"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]",
+                        "dependencies": [
+                          "format"
+                        ]
+                      }
+                    },
+                    {
+                      "keyword": "formatMinimum",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]",
+                        "dependencies": "[Circular]"
+                      }
+                    },
+                    {
+                      "keyword": "formatExclusiveMaximum",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]",
+                        "dependencies": "[Circular]"
+                      }
+                    },
+                    {
+                      "keyword": "formatExclusiveMinimum",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]",
+                        "dependencies": "[Circular]"
+                      }
+                    }
+                  ]
+                },
+                "array": {
+                  "type": "array",
+                  "rules": [
+                    {
+                      "keyword": "maxItems",
+                      "definition": {
+                        "keyword": [
+                          "maxItems",
+                          "minItems"
+                        ],
+                        "type": [
+                          "array"
+                        ],
+                        "schemaType": [
+                          "number"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "minItems",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "additionalItems",
+                      "definition": {
+                        "keyword": "additionalItems",
+                        "type": [
+                          "array"
+                        ],
+                        "schemaType": [
+                          "boolean",
+                          "object"
+                        ],
+                        "before": "uniqueItems",
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "items",
+                      "definition": {
+                        "keyword": "items",
+                        "type": [
+                          "array"
+                        ],
+                        "schemaType": [
+                          "object",
+                          "array",
+                          "boolean"
+                        ],
+                        "before": "uniqueItems",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "contains",
+                      "definition": {
+                        "keyword": "contains",
+                        "type": [
+                          "array"
+                        ],
+                        "schemaType": [
+                          "object",
+                          "boolean"
+                        ],
+                        "before": "uniqueItems",
+                        "trackErrors": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "uniqueItems",
+                      "definition": {
+                        "keyword": "uniqueItems",
+                        "type": [
+                          "array"
+                        ],
+                        "schemaType": [
+                          "boolean"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    }
+                  ]
+                },
+                "object": {
+                  "type": "object",
+                  "rules": [
+                    {
+                      "keyword": "maxProperties",
+                      "definition": {
+                        "keyword": [
+                          "maxProperties",
+                          "minProperties"
+                        ],
+                        "type": [
+                          "object"
+                        ],
+                        "schemaType": [
+                          "number"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "minProperties",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "type": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "$data": true,
+                        "error": "[Circular]",
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "required",
+                      "definition": {
+                        "keyword": "required",
+                        "type": [
+                          "object"
+                        ],
+                        "schemaType": [
+                          "array"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "propertyNames",
+                      "definition": {
+                        "keyword": "propertyNames",
+                        "type": [
+                          "object"
+                        ],
+                        "schemaType": [
+                          "object",
+                          "boolean"
+                        ],
+                        "error": {
+                          "message": "property name must be valid",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "additionalProperties",
+                      "definition": {
+                        "keyword": "additionalProperties",
+                        "type": [
+                          "object"
+                        ],
+                        "schemaType": [
+                          "boolean",
+                          "object"
+                        ],
+                        "allowUndefined": true,
+                        "trackErrors": true,
+                        "error": {
+                          "message": "must NOT have additional properties",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "dependencies",
+                      "definition": {
+                        "keyword": "dependencies",
+                        "type": [
+                          "object"
+                        ],
+                        "schemaType": [
+                          "object"
+                        ],
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "properties",
+                      "definition": {
+                        "keyword": "properties",
+                        "type": [
+                          "object"
+                        ],
+                        "schemaType": [
+                          "object"
+                        ],
+                        "code": "[Function]"
+                      }
+                    },
+                    {
+                      "keyword": "patternProperties",
+                      "definition": {
+                        "keyword": "patternProperties",
+                        "type": [
+                          "object"
+                        ],
+                        "schemaType": [
+                          "object"
+                        ],
+                        "code": "[Function]"
+                      }
+                    }
+                  ]
+                },
+                "integer": true,
+                "boolean": true,
+                "null": true
+              },
+              "rules": [
+                {
+                  "rules": [
+                    {
+                      "keyword": "$comment",
+                      "definition": {
+                        "keyword": "$comment",
+                        "type": [],
+                        "schemaType": []
+                      }
+                    },
+                    {
+                      "keyword": "id",
+                      "definition": {
+                        "keyword": "id",
+                        "code": "[Function]",
+                        "type": [],
+                        "schemaType": []
+                      }
+                    },
+                    {
+                      "keyword": "$ref",
+                      "definition": {
+                        "keyword": "$ref",
+                        "schemaType": [
+                          "string"
+                        ],
+                        "code": "[Function]",
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "type",
+                      "definition": {
+                        "keyword": "type",
+                        "schemaType": [
+                          "string",
+                          "array"
+                        ],
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "nullable",
+                      "definition": {
+                        "keyword": "nullable",
+                        "schemaType": [
+                          "boolean"
+                        ],
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "const",
+                      "definition": {
+                        "keyword": "const",
+                        "$data": true,
+                        "error": {
+                          "message": "must be equal to constant",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]",
+                        "type": [],
+                        "schemaType": []
+                      }
+                    },
+                    {
+                      "keyword": "enum",
+                      "definition": {
+                        "keyword": "enum",
+                        "schemaType": [
+                          "array"
+                        ],
+                        "$data": true,
+                        "error": {
+                          "message": "must be equal to one of the allowed values",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]",
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "not",
+                      "definition": {
+                        "keyword": "not",
+                        "schemaType": [
+                          "object",
+                          "boolean"
+                        ],
+                        "trackErrors": true,
+                        "code": "[Function]",
+                        "error": {
+                          "message": "must NOT be valid"
+                        },
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "anyOf",
+                      "definition": {
+                        "keyword": "anyOf",
+                        "schemaType": [
+                          "array"
+                        ],
+                        "trackErrors": true,
+                        "code": "[Function]",
+                        "error": {
+                          "message": "must match a schema in anyOf"
+                        },
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "oneOf",
+                      "definition": {
+                        "keyword": "oneOf",
+                        "schemaType": [
+                          "array"
+                        ],
+                        "trackErrors": true,
+                        "error": {
+                          "message": "must match exactly one schema in oneOf",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]",
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "allOf",
+                      "definition": {
+                        "keyword": "allOf",
+                        "schemaType": [
+                          "array"
+                        ],
+                        "code": "[Function]",
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "if",
+                      "definition": {
+                        "keyword": "if",
+                        "schemaType": [
+                          "object",
+                          "boolean"
+                        ],
+                        "trackErrors": true,
+                        "error": {
+                          "message": "[Function]",
+                          "params": "[Function]"
+                        },
+                        "code": "[Function]",
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "then",
+                      "definition": {
+                        "keyword": [
+                          "then",
+                          "else"
+                        ],
+                        "schemaType": [
+                          "object",
+                          "boolean"
+                        ],
+                        "code": "[Function]",
+                        "type": []
+                      }
+                    },
+                    {
+                      "keyword": "else",
+                      "definition": {
+                        "keyword": "[Circular]",
+                        "schemaType": "[Circular]",
+                        "code": "[Function]",
+                        "type": "[Circular]"
+                      }
+                    }
+                  ]
+                },
+                "[Circular]",
+                "[Circular]",
+                "[Circular]",
+                "[Circular]"
+              ],
+              "post": {
+                "rules": []
+              },
+              "all": {
+                "$comment": "[Circular]",
+                "id": "[Circular]",
+                "$ref": "[Circular]",
+                "maximum": "[Circular]",
+                "minimum": "[Circular]",
+                "exclusiveMaximum": "[Circular]",
+                "exclusiveMinimum": "[Circular]",
+                "multipleOf": "[Circular]",
+                "maxLength": "[Circular]",
+                "minLength": "[Circular]",
+                "pattern": "[Circular]",
+                "maxProperties": "[Circular]",
+                "minProperties": "[Circular]",
+                "required": "[Circular]",
+                "maxItems": "[Circular]",
+                "minItems": "[Circular]",
+                "uniqueItems": "[Circular]",
+                "type": "[Circular]",
+                "nullable": "[Circular]",
+                "const": "[Circular]",
+                "enum": "[Circular]",
+                "not": "[Circular]",
+                "anyOf": "[Circular]",
+                "oneOf": "[Circular]",
+                "allOf": "[Circular]",
+                "if": "[Circular]",
+                "then": "[Circular]",
+                "else": "[Circular]",
+                "propertyNames": "[Circular]",
+                "additionalProperties": "[Circular]",
+                "dependencies": "[Circular]",
+                "properties": "[Circular]",
+                "patternProperties": "[Circular]",
+                "additionalItems": "[Circular]",
+                "items": "[Circular]",
+                "contains": "[Circular]",
+                "format": "[Circular]",
+                "formatMaximum": "[Circular]",
+                "formatMinimum": "[Circular]",
+                "formatExclusiveMaximum": "[Circular]",
+                "formatExclusiveMinimum": "[Circular]"
+              },
+              "keywords": {
+                "$async": true,
+                "$schema": true,
+                "$id": true,
+                "$defs": true,
+                "$vocabulary": true,
+                "$comment": true,
+                "definitions": true,
+                "id": true,
+                "$ref": true,
+                "maximum": true,
+                "minimum": true,
+                "exclusiveMaximum": true,
+                "exclusiveMinimum": true,
+                "multipleOf": true,
+                "maxLength": true,
+                "minLength": true,
+                "pattern": true,
+                "maxProperties": true,
+                "minProperties": true,
+                "required": true,
+                "maxItems": true,
+                "minItems": true,
+                "uniqueItems": true,
+                "type": true,
+                "nullable": true,
+                "const": true,
+                "enum": true,
+                "not": true,
+                "anyOf": true,
+                "oneOf": true,
+                "allOf": true,
+                "if": true,
+                "then": true,
+                "else": true,
+                "propertyNames": true,
+                "additionalProperties": true,
+                "dependencies": true,
+                "properties": true,
+                "patternProperties": true,
+                "additionalItems": true,
+                "items": true,
+                "contains": true,
+                "format": true,
+                "title": true,
+                "description": true,
+                "default": true,
+                "deprecated": true,
+                "readOnly": true,
+                "writeOnly": true,
+                "examples": true,
+                "contentMediaType": true,
+                "contentEncoding": true,
+                "contentSchema": true,
+                "formatMaximum": true,
+                "formatMinimum": true,
+                "formatExclusiveMaximum": true,
+                "formatExclusiveMinimum": true
+              }
+            },
+            "_metaOpts": {
+              "strict": false,
+              "validateFormats": false,
+              "validateSchema": false,
+              "allErrors": true,
+              "strictSchema": false,
+              "strictNumbers": false,
+              "strictTypes": false,
+              "strictTuples": false,
+              "strictRequired": false,
+              "code": "[Circular]",
+              "loopRequired": 200,
+              "loopEnum": 200,
+              "meta": true,
+              "messages": true,
+              "inlineRefs": true,
+              "schemaId": "$id",
+              "addUsedSchema": true,
+              "unicodeRegExp": true,
+              "int32range": true,
+              "uriResolver": "[Circular]"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+──────────────────────────────────────── SKILLS (0) ────────────────────────────────────────
+
+──────────────────────────────────────── SUBAGENTS (1) ────────────────────────────────────────
+{
+  "po": {
+    "description": "PO",
+    "model": "haiku",
+    "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Glob",
+      "Grep",
+      "MultiEdit",
+      "NotebookRead",
+      "NotebookEdit",
+      "WebSearch",
+      "WebFetch",
+      "TodoRead",
+      "TodoWrite",
+      "mcp__figma__*",
+      "mcp__notion__*",
+      "mcp__atlassian__*",
+      "mcp__squad-pipeline__*"
+    ]
+  }
+}
+
+
+──────────────────────────────────────── FULL PROMPT ────────────────────────────────────────
+## Identity
+
+You are **FusionCode**, an AI-powered development orchestrator created by BRQ.
+When making git commits, always include the co-authorship trailer:
+```
+Co-Authored-By: FusionCode <noreply@brq.com>
+```
+
+You are orchestrating the following task:
+
+login com telefone
+
+## Your Role
+
+You coordinate agents to complete the task described above. Delegate to each agent using the Agent tool and track progress using squad-pipeline MCP tools.
+
+## Pipeline
+
+Execute the agents in this exact order:
+
+1. **PO**
+
+Flow: PO
+
+## Available Agents
+
+These agents are available via the Agent tool:
+- **po**
+
+## Rules
+
+0. **CRITICAL — Branch**: You are running inside a git worktree. Branch `us-login-com-telefone` is **already checked out**. Do NOT run `git checkout` or `git checkout -b` — it will fail. ALL work MUST happen on this branch. NEVER commit to `feature/todo-api` or `main`.
+1. **Delegate via Agent tool**: For each step, use the Agent tool to invoke the corresponding subagent. Pass the agent's slug as `subagent_type`. Include a clear prompt telling the agent what to do.
+2. **Track progress**: After EACH agent finishes, call `mcp__squad-pipeline__advance_step` with the step number, agent name, status, and a brief summary.
+3. **Parallel steps**: For steps with multiple agents, launch ALL Agent calls simultaneously in a single message. Wait for all to complete, then call advance_step for each.
+4. **Git commits**: After each step, run:
+   ```bash
+   git add -A && git commit -m "task: <agent name>
+
+Co-Authored-By: FusionCode <noreply@brq.com>"
+   ```
+5. **Git push**: After ALL steps are done and committed, push the branch:
+   ```bash
+   git push -u origin HEAD
+   ```
+6. **Final report**: When done, output a timing table:
+```
+| Agent | Duration |
+|-------|----------|
+| PO | XX:XX |
+| **Total** | **XX:XX** |
+```
+
+## Context
+
+- Task: login com telefone
+- Output files should be saved in reports/.
+
+## Agent Delegation
+
+Each subagent has its full instructions loaded. When delegating, include the task description:
+"login com telefone"
+
+## Project Documentation (Platform-managed)
+
+Platform documentation is stored at `/Users/user/tmp/_squad_remote/run-387/repo/docs/`. This is OUTSIDE the repository — it will not conflict with the repo's own files.
+Instruct agents to use absolute paths when reading or writing these docs.
+
+**Available docs:**
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/ARCHITECTURE.md` — system architecture, components, data flow
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/CONVENTIONS.md` — coding patterns and naming standards
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/API.md` — API endpoints documentation
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/DECISIONS.md` — architecture decision log (append-only)
+- Check `ls /Users/user/tmp/_squad_remote/run-387/repo/docs/` for additional docs and subdirectories
+
+**Rules for agents:**
+- **Before coding:** instruct Backend/Frontend agents to read `/Users/user/tmp/_squad_remote/run-387/repo/docs/CONVENTIONS.md`
+- **After architectural decisions:** instruct agents to append to `/Users/user/tmp/_squad_remote/run-387/repo/docs/DECISIONS.md` with date, decision, and rationale
+- **After new APIs:** instruct Backend agent to update `/Users/user/tmp/_squad_remote/run-387/repo/docs/API.md`
+- Docs are the project's long-term memory — information saved here persists across sessions
+
+## IMPORTANT
+
+- Start by calling `mcp__squad-pipeline__get_status` to see the full pipeline.
+- Always call `mcp__squad-pipeline__advance_step` after each agent — this is how progress is tracked.
+- Do NOT skip steps. Do NOT reorder steps. Follow the pipeline exactly.
+- If an agent fails, call advance_step with status "failed" and STOP.
+
+
+
+================================================================================
+DELEGATION — master → po
+================================================================================
+Timestamp: 2026-04-01T17:09:47.911Z
+From:      master
+To:        po
+
+──────────────────────────────────────── AGENT DEFINITION ────────────────────────────────────────
+{
+  "description": "PO",
+  "model": "haiku",
+  "tools": [
+    "Read",
+    "Write",
+    "Edit",
+    "Bash",
+    "Glob",
+    "Grep",
+    "MultiEdit",
+    "NotebookRead",
+    "NotebookEdit",
+    "WebSearch",
+    "WebFetch",
+    "TodoRead",
+    "TodoWrite",
+    "mcp__figma__*",
+    "mcp__notion__*",
+    "mcp__atlassian__*",
+    "mcp__squad-pipeline__*"
+  ]
+}
+
+──────────────────────────────────────── AGENT OWN PROMPT (system prompt do SDK) ────────────────────────────────────────
+# Agente PO
+
+Voce transforma uma GitHub issue em historia de usuario.
+
+## Passo 1 — Ler issue do GitHub
+```
+Bash: ~/bin/gh issue view <N> --json title,body
+```
+
+## Passo 2 — Extrair URL do Figma (se existir)
+Procure no body da issue uma URL do Figma (formato `https://figma.com/design/...`).
+Se encontrar, guarde-a para incluir na historia como **Referencia Visual**.
+
+## Passo 3 — Criar pasta de artefatos
+```
+Bash: mkdir -p tasks/<N>
+```
+
+## Passo 4 — Escrever historia
+```
+Write: tasks/<N>/US-<N>-<nome-kebab>.txt
+```
+
+Use o titulo da issue como nome (kebab-case). Formato:
+
+```
+US-<N> — <Titulo>
+======================
+
+CONTEXTO
+--------
+<1-2 frases sobre o proposito>
+
+HISTORIA
+--------
+Como <usuario>,
+quero <acao>,
+para <beneficio>.
+
+CRITERIOS DE ACEITACAO
+-----------------------
+1. <criterio verificavel>
+2. <criterio verificavel>
+...
+
+REGRAS TECNICAS
+---------------
+- Seguir convencoes do CLAUDE.md
+- Sem over-engineering
+
+CRITERIOS DE TESTE (QA)
+------------------------
+API:
+  - <cenario>
+
+E2E:
+  - <cenario>
+
+REFERENCIA VISUAL (FIGMA)
+-------------------------
+<URL do Figma se existir na issue, caso contrario remova esta secao>
+
+FORA DO ESCOPO
+--------------
+- <o que NAO fazer>
+```
+
+## Passo 5 — Postar historia como comentario na issue
+```
+Bash: ~/bin/gh issue comment <N> --body "$(cat tasks/<N>/US-<N>-<nome-kebab>.txt)"
+```
+
+Informe o caminho do arquivo e PARE.
+
+## PROIBIDO
+- Comandos git (checkout, commit, push, status, log, diff)
+- Ler CLAUDE.md ou outros arquivos do projeto
+- Implementar codigo
+
+──────────────────────────────────────── DELEGATION PROMPT (user prompt do Master) ────────────────────────────────────────
+Você é o agente PO (Product Owner) responsável por criar a documentação de produto para a seguinte tarefa:
+
+**Tarefa:** login com telefone
+
+## Sua Responsabilidade
+Criar um documento de User Story completo e salvar em `reports/US-login-com-telefone.md`.
+
+## Contexto do Projeto
+Leia os documentos disponíveis para entender o contexto:
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/ARCHITECTURE.md`
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/CONVENTIONS.md`
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/API.md`
+- `/Users/user/tmp/_squad_remote/run-387/repo/docs/DECISIONS.md`
+
+## O que produzir
+Crie o arquivo `reports/US-login-com-telefone.md` com:
+
+1. **User Story** no formato: "Como [usuário], quero [funcionalidade], para que [benefício]"
+2. **Critérios de Aceitação** (lista detalhada)
+3. **Cenários de Teste** (casos de sucesso e falha)
+4. **Requisitos Técnicos** (considerações de implementação)
+5. **Definição de Pronto** (DoD)
+
+## Regras
+- Use caminhos absolutos ao ler/escrever arquivos
+- O arquivo de saída deve ser salvo em: `/Users/user/tmp/_squad_remote/run-387/repo/reports/US-login-com-telefone.md`
+- Após decisões arquiteturais relevantes, atualize `/Users/user/tmp/_squad_remote/run-387/repo/docs/DECISIONS.md`
+- Seja detalhado e considere edge cases (número inválido, OTP expirado, tentativas excessivas, etc.)
+
+
