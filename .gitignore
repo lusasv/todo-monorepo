@@ -6,5 +6,5 @@ dist
 /.idea
 .vscode
 .DS_Store
-.fusion-plugin/.mcp.json
+.fusion-plugin/
 logs/
