@@ -1,63 +1,29 @@
 # API Reference
 
-## Existing Endpoints
+## Routing
 
-### Auth
+### Frontend Routes
 
-#### POST /auth/register
-- **Body:** `{ email: string, password: string, name?: string }`
-- **Response 201:** `{ token: string, user: { id, email, name } }`
-- **Response 400:** `{ error: string }` (missing fields or email already exists)
+| Path | Component | Type | Notes |
+|------|-----------|------|-------|
+| `/` | `TodoApp` | Page | Authenticated todo list (requires token in localStorage) |
+| `/tela` | `TelaExemplar` | Page | Example todo screen with mock data (no authentication required) |
 
-#### POST /auth/login
-- **Body:** `{ email: string, password: string }`
-- **Response 200:** `{ token: string, user: { id, email, name } }`
-- **Response 400:** `{ error: string }` (missing fields)
-- **Response 401:** `{ error: string }` (user not found or invalid password)
+The `/tela` route is a frontend-only UI example. No backend endpoints are required or called.
 
-### Tasks
+## Backend Endpoints
 
-#### GET /tasks
-- **Query params:** `completed=true|false` (optional)
-- **Response 200:** `Array<{ id, title, description, dueDate, completed, createdAt }>`
+Refer to backend implementation for the current list of REST API endpoints under `/api/`.
 
-#### POST /tasks
-- **Body:** `{ title: string, description?: string, dueDate?: string }`
-- **Response 201:** `{ id, title, description, dueDate, completed, createdAt }`
-- **Response 400:** `{ error: string }` (invalid fields)
+### Example Endpoints (Reference)
 
-#### GET /tasks/:id
-- **Response 200:** `{ id, title, description, dueDate, completed, createdAt }`
-- **Response 404:** `{ error: "not found" }`
+- `GET /api/tasks` — Fetch user tasks (requires Bearer token)
+- `POST /api/tasks` — Create new task (requires Bearer token)
 
-#### PUT /tasks/:id
-- **Body:** `{ title?: string, description?: string, dueDate?: string, completed?: boolean }`
-- **Response 200:** `{ id, title, description, dueDate, completed, createdAt }`
-- **Response 404:** `{ error: "not found" }`
+## Notes on US-7
 
-#### DELETE /tasks/:id
-- **Response 204:** (no body)
-- **Response 404:** `{ error: "not found" }`
-
-### Health
-
-#### GET /health
-- **Response 200:** `{ status: "ok" }`
-
----
-
-## Frontend Routes
-
-### /tela — Exemplar Todo Screen
-- **Component:** `frontend/src/components/TelaExemplar.tsx`
-- **Access:** Public (no authentication required)
-- **Backend Calls:** None
-- **Data Source:** Hardcoded mock data (5 example todos)
-- **Features:**
-  - Progress bar showing completion percentage
-  - Task list with title, description, and status badges
-  - Visual feedback for completed tasks
-  - Responsive mobile-optimized layout
-  - Back button to home page
-
-This is a frontend-only demonstration screen added in US-7. No API endpoints are consumed.
+US-7 (Criar tela mockada exemplar) introduces only frontend changes:
+- New component: `TelaExemplar.tsx` at path `/tela`
+- No new backend endpoints created
+- Uses hardcoded mock data (`FAKE_TODOS`) — no API calls made
+- Available without authentication

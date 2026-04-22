@@ -1,23 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 
-type Todo = {
+interface Todo {
   id: number;
   title: string;
   description: string;
   completed: boolean;
-};
+}
 
 const FAKE_TODOS: Todo[] = [
-  { id: 1, title: "Revisar pull request do colega", description: "Checar cobertura de testes e padroes de codigo", completed: true },
-  { id: 2, title: "Escrever testes unitarios", description: "Cobrir os novos endpoints de autenticacao", completed: false },
-  { id: 3, title: "Atualizar documentacao da API", description: "Incluir exemplos de request e response", completed: false },
-  { id: 4, title: "Configurar CI/CD", description: "Pipeline de build e deploy automatico no GitHub Actions", completed: true },
-  { id: 5, title: "Refinamento com o PO", description: "Alinhar criterios de aceite da proxima sprint", completed: false },
+  {
+    id: 1,
+    title: "Comprar mantimentos",
+    description: "Leite, ovos, pao e frutas da semana",
+    completed: true,
+  },
+  {
+    id: 2,
+    title: "Estudar TypeScript",
+    description: "Revisar generics, utility types e strict mode",
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "Fazer exercicios",
+    description: "30 minutos de corrida e alongamento",
+    completed: false,
+  },
+  {
+    id: 4,
+    title: "Revisar pull request",
+    description: "Analisar PR #42 do repositorio do time",
+    completed: true,
+  },
+  {
+    id: 5,
+    title: "Planejar sprint",
+    description: "Preparar backlog e priorizar tarefas para proxima semana",
+    completed: false,
+  },
 ];
 
 export default function TelaExemplar() {
-  const completed = FAKE_TODOS.filter((t) => t.completed).length;
-  const total = FAKE_TODOS.length;
+  const [todos, setTodos] = useState<Todo[]>(FAKE_TODOS);
+  const [filter, setFilter] = useState<"all" | "pending" | "done">("all");
+
+  function toggleTodo(id: number) {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+    );
+  }
+
+  const filtered = todos.filter((t) => {
+    if (filter === "pending") return !t.completed;
+    if (filter === "done") return t.completed;
+    return true;
+  });
+
+  const doneCount = todos.filter((t) => t.completed).length;
+  const totalCount = todos.length;
 
   return (
     <>
@@ -31,93 +71,137 @@ export default function TelaExemplar() {
         .tela-wrapper {
           min-height: 100vh;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
           padding: 32px 16px;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
         }
 
-        .tela-card {
-          background: #ffffff;
-          border-radius: 12px;
-          padding: 40px;
+        .tela-container {
           width: 100%;
-          max-width: 560px;
-          margin: 0 auto;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+          max-width: 640px;
         }
 
         .tela-header {
-          margin-bottom: 28px;
+          margin-bottom: 24px;
         }
 
         .tela-title {
-          font-size: 28px;
+          font-size: 32px;
           font-weight: 700;
-          color: #1a1a2e;
-          margin: 0 0 6px;
+          color: #ffffff;
+          margin: 0 0 4px;
         }
 
         .tela-subtitle {
           font-size: 14px;
-          color: #6b7280;
-          margin: 0 0 20px;
+          color: rgba(255, 255, 255, 0.8);
+          margin: 0;
+        }
+
+        .tela-progress-card {
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 12px;
+          padding: 16px 20px;
+          margin-bottom: 16px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          backdrop-filter: blur(4px);
+        }
+
+        .tela-progress-text {
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 600;
+          white-space: nowrap;
         }
 
         .tela-progress-bar-bg {
+          flex: 1;
           height: 8px;
-          background: #e5e7eb;
-          border-radius: 99px;
+          background: rgba(255, 255, 255, 0.25);
+          border-radius: 4px;
           overflow: hidden;
         }
 
         .tela-progress-bar-fill {
           height: 100%;
-          background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-          border-radius: 99px;
-          transition: width 0.4s ease;
+          background: #ffffff;
+          border-radius: 4px;
+          transition: width 0.3s ease;
         }
 
-        .tela-progress-label {
+        .tela-filters {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 16px;
+        }
+
+        .tela-filter-btn {
+          padding: 7px 16px;
+          border-radius: 20px;
+          border: 2px solid rgba(255, 255, 255, 0.5);
+          background: transparent;
+          color: rgba(255, 255, 255, 0.85);
           font-size: 13px;
-          color: #6b7280;
-          margin-top: 6px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .tela-filter-btn:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.8);
+          color: #ffffff;
+        }
+
+        .tela-filter-btn.active {
+          background: #ffffff;
+          border-color: #ffffff;
+          color: #764ba2;
         }
 
         .tela-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
           display: flex;
           flex-direction: column;
           gap: 12px;
         }
 
-        .tela-item {
+        .tela-card {
+          background: #ffffff;
+          border-radius: 12px;
+          padding: 18px 20px;
           display: flex;
           align-items: flex-start;
           gap: 14px;
-          padding: 16px;
-          border: 2px solid #e5e7eb;
-          border-radius: 10px;
-          background: #f9fafb;
-          transition: border-color 0.2s ease;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
+          cursor: pointer;
         }
 
-        .tela-item.item-done {
-          background: #f0fdf4;
-          border-color: #bbf7d0;
+        .tela-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .tela-card.done {
+          opacity: 0.72;
         }
 
         .tela-checkbox {
-          width: 20px;
-          height: 20px;
+          flex-shrink: 0;
+          width: 22px;
+          height: 22px;
           border-radius: 50%;
           border: 2px solid #d1d5db;
-          flex-shrink: 0;
-          margin-top: 2px;
+          background: transparent;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #ffffff;
+          margin-top: 1px;
+          transition: background 0.2s ease, border-color 0.2s ease;
         }
 
         .tela-checkbox.checked {
@@ -125,129 +209,169 @@ export default function TelaExemplar() {
           border-color: transparent;
         }
 
-        .tela-checkbox-tick {
-          width: 10px;
-          height: 10px;
-          color: #ffffff;
+        .tela-checkbox-icon {
+          width: 12px;
+          height: 12px;
+          stroke: #ffffff;
+          fill: none;
+          stroke-width: 2.5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
         }
 
-        .tela-item-body {
+        .tela-card-content {
           flex: 1;
           min-width: 0;
         }
 
-        .tela-item-title {
+        .tela-card-title {
           font-size: 15px;
           font-weight: 600;
           color: #1f2937;
           margin: 0 0 4px;
-        }
-
-        .tela-item-title.done-title {
-          text-decoration: line-through;
-          color: #9ca3af;
-        }
-
-        .tela-item-desc {
-          font-size: 13px;
-          color: #6b7280;
-          margin: 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .tela-badge {
-          font-size: 11px;
-          font-weight: 600;
-          padding: 3px 10px;
-          border-radius: 99px;
-          flex-shrink: 0;
-          margin-top: 2px;
-        }
-
-        .tela-badge.badge-done {
-          background: #dcfce7;
-          color: #15803d;
-        }
-
-        .tela-badge.badge-pending {
-          background: #eff6ff;
-          color: #1d4ed8;
-        }
-
-        .tela-back-link {
-          display: inline-block;
-          margin-top: 24px;
-          font-size: 14px;
-          color: #667eea;
-          font-weight: 600;
-          cursor: pointer;
-          background: none;
-          border: none;
-          padding: 0;
-          text-decoration: underline;
           transition: color 0.2s ease;
         }
 
-        .tela-back-link:hover {
-          color: #764ba2;
+        .tela-card-title.done {
+          color: #9ca3af;
+          text-decoration: line-through;
+        }
+
+        .tela-card-description {
+          font-size: 13px;
+          color: #6b7280;
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .tela-badge {
+          flex-shrink: 0;
+          font-size: 11px;
+          font-weight: 700;
+          padding: 3px 9px;
+          border-radius: 10px;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+
+        .tela-badge.done {
+          background: #d1fae5;
+          color: #065f46;
+        }
+
+        .tela-badge.pending {
+          background: #fef3c7;
+          color: #92400e;
+        }
+
+        .tela-empty {
+          text-align: center;
+          padding: 40px 20px;
+          color: rgba(255, 255, 255, 0.75);
+          font-size: 14px;
         }
 
         @media (max-width: 767px) {
+          .tela-wrapper {
+            padding: 20px 12px;
+          }
+
+          .tela-title {
+            font-size: 26px;
+          }
+
           .tela-card {
-            padding: 24px 16px;
-            box-shadow: none;
-            border-radius: 8px;
+            padding: 14px 16px;
+          }
+
+          .tela-filters {
+            flex-wrap: wrap;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .tela-container {
+            max-width: 580px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .tela-container {
+            max-width: 640px;
           }
         }
       `}</style>
 
       <div className="tela-wrapper">
-        <div className="tela-card">
+        <div className="tela-container">
           <div className="tela-header">
-            <h1 className="tela-title">Minhas Tarefas</h1>
-            <p className="tela-subtitle">Acompanhe o progresso das suas atividades</p>
+            <h1 className="tela-title">Meus Todos</h1>
+            <p className="tela-subtitle">Tela exemplar com dados mockados</p>
+          </div>
+
+          <div className="tela-progress-card">
+            <span className="tela-progress-text">
+              {doneCount}/{totalCount} concluidos
+            </span>
             <div className="tela-progress-bar-bg">
               <div
                 className="tela-progress-bar-fill"
-                style={{ width: `${Math.round((completed / total) * 100)}%` }}
+                style={{ width: totalCount > 0 ? `${(doneCount / totalCount) * 100}%` : "0%" }}
               />
             </div>
-            <p className="tela-progress-label">
-              {completed} de {total} tarefas concluidas
-            </p>
           </div>
 
-          <ul className="tela-list">
-            {FAKE_TODOS.map((todo) => (
-              <li key={todo.id} className={`tela-item${todo.completed ? " item-done" : ""}`}>
-                <div className={`tela-checkbox${todo.completed ? " checked" : ""}`}>
-                  {todo.completed && (
-                    <svg className="tela-checkbox-tick" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1.5 5L4 7.5L8.5 2.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  )}
-                </div>
-                <div className="tela-item-body">
-                  <p className={`tela-item-title${todo.completed ? " done-title" : ""}`}>
-                    {todo.title}
-                  </p>
-                  <p className="tela-item-desc">{todo.description}</p>
-                </div>
-                <span className={`tela-badge${todo.completed ? " badge-done" : " badge-pending"}`}>
-                  {todo.completed ? "Feito" : "Pendente"}
-                </span>
-              </li>
+          <div className="tela-filters">
+            {(["all", "pending", "done"] as const).map((f) => (
+              <button
+                key={f}
+                className={`tela-filter-btn${filter === f ? " active" : ""}`}
+                onClick={() => setFilter(f)}
+              >
+                {f === "all" ? "Todos" : f === "pending" ? "Pendentes" : "Concluidos"}
+              </button>
             ))}
-          </ul>
+          </div>
 
-          <button
-            className="tela-back-link"
-            onClick={() => { window.location.pathname = "/"; }}
-          >
-            Voltar ao inicio
-          </button>
+          <div className="tela-list">
+            {filtered.length === 0 ? (
+              <p className="tela-empty">Nenhum item encontrado.</p>
+            ) : (
+              filtered.map((todo) => (
+                <div
+                  key={todo.id}
+                  className={`tela-card${todo.completed ? " done" : ""}`}
+                  onClick={() => toggleTodo(todo.id)}
+                  role="button"
+                  aria-pressed={todo.completed}
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      toggleTodo(todo.id);
+                    }
+                  }}
+                >
+                  <div className={`tela-checkbox${todo.completed ? " checked" : ""}`}>
+                    {todo.completed && (
+                      <svg className="tela-checkbox-icon" viewBox="0 0 12 12">
+                        <polyline points="1.5,6 4.5,9 10.5,3" />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="tela-card-content">
+                    <p className={`tela-card-title${todo.completed ? " done" : ""}`}>
+                      {todo.title}
+                    </p>
+                    <p className="tela-card-description">{todo.description}</p>
+                  </div>
+                  <span className={`tela-badge${todo.completed ? " done" : " pending"}`}>
+                    {todo.completed ? "Feito" : "Pendente"}
+                  </span>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </>

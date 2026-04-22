@@ -16,11 +16,7 @@ type User = {
   name: string | null;
 };
 
-export default function App() {
-  if (window.location.pathname === "/tela") {
-    return <TelaExemplar />;
-  }
-
+function TodoApp() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("");
   const [user, setUser] = useState<User | null>(null);
@@ -95,4 +91,11 @@ export default function App() {
       </ul>
     </div>
   );
+}
+
+export default function App() {
+  if (window.location.pathname === "/tela") {
+    return <TelaExemplar />;
+  }
+  return <TodoApp />;
 }
