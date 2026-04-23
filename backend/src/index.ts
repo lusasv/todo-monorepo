@@ -12,6 +12,9 @@ app.use(express.json());
 
 app.get("/health", (req, res) => res.json({ status: "ok" }));
 
+// US-7: stub endpoint for the /tela mock screen (no auth required)
+app.get("/tela", (_req, res) => res.status(200).json({ status: "ok" }));
+
 app.post("/auth/register", async (req, res) => {
   const { email, password, name } = req.body;
   if (!email || !password) {
