@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import LoginForm from "./LoginForm";
+import TelaExemplar from "./components/TelaExemplar";
 
 type Task = {
   id: number;
@@ -15,7 +16,7 @@ type User = {
   name: string | null;
 };
 
-export default function App() {
+function TodoApp() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("");
   const [user, setUser] = useState<User | null>(null);
@@ -90,4 +91,11 @@ export default function App() {
       </ul>
     </div>
   );
+}
+
+export default function App() {
+  if (window.location.pathname === "/tela") {
+    return <TelaExemplar />;
+  }
+  return <TodoApp />;
 }
